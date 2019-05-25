@@ -68,6 +68,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="EstudioExpress.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>EstudioExpress.Designer.cs</LastGenOutput>

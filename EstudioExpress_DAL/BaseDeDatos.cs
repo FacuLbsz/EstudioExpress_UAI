@@ -8,7 +8,7 @@ using System.Data;
 public class BaseDeDatos
 {
 
-    private String sqlString = "Persist Security Info=False;User ID=sa;Password=qwer1234;Initial Catalog=Benefix;Server=DESKTOP-VA9KCI4\\SQLEXPRESS";
+    private static String sqlString = "Persist Security Info=False;User ID=sa;Password=qwer1234;Initial Catalog=EstudioExpress;Server=DESKTOP-VA9KCI4\\SQLEXPRESS";
     private SqlConnection sqlConnection;
     private static BaseDeDatos instancia;
 
@@ -20,19 +20,17 @@ public class BaseDeDatos
 
     private BaseDeDatos(String sqlString)
     {
-        this.sqlString = sqlString;
         sqlConnection = new SqlConnection(sqlString);
         Console.WriteLine("Conexion realizada!");
     }
-
-    public static BaseDeDatos ObtenerInstancia(String sqlString)
-    {
-        instancia = new BaseDeDatos(sqlString);
-        return instancia;
-    }
+    
 
     public static BaseDeDatos ObtenerInstancia()
     {
+        if(instancia == null)
+        {
+            instancia = new BaseDeDatos(sqlString);
+        }
         return instancia;
     }
 

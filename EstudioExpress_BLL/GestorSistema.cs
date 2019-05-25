@@ -26,11 +26,12 @@ public class GestorSistema
 
     private GestorSistema()
     {
-        if (EstudioExpress_BLL.EstudioExpress.Default.StringDeConexion.Length == 0)
-        {
-            throw new Exception("El string de conexion no se encuentra configurado.");
-        }
-        baseDeDatos = BaseDeDatos.ObtenerInstancia(GestorDeEncriptacion.DesencriptarRSA(EstudioExpress_BLL.EstudioExpress.Default.StringDeConexion));
+        //if (EstudioExpress_BLL.EstudioExpress.Default.StringDeConexion.Length == 0)
+        //{
+        //   throw new Exception("El string de conexion no se encuentra configurado.");
+        // }
+        //baseDeDatos = BaseDeDatos.ObtenerInstancia(GestorDeEncriptacion.DesencriptarRSA(EstudioExpress_BLL.EstudioExpress.Default.StringDeConexion));
+        baseDeDatos = BaseDeDatos.ObtenerInstancia();
     }
 
     public static GestorSistema ObtenerInstancia()

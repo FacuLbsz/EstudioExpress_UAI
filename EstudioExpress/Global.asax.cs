@@ -18,6 +18,9 @@ namespace EstudioExpress
             // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GestorSistema.ObtenerInstancia();
+
         }
 
         void Application_PostAuthenticateRequest(object sender, EventArgs e)
