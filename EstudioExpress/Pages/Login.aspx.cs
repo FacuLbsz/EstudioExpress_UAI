@@ -13,16 +13,63 @@ namespace EstudioExpress
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+
+                Response.Redirect("Home.aspx");
+
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(UsuarioTextBox.Text) && !String.IsNullOrEmpty(ContraseñaTextBox.Text))
+            {
 
-            var cookie = new HttpCookie("EstudioExpress_Usuario", GestorDeEncriptacion.EncriptarAes("WEBMASTER,TUTOR"));
-            
-            Response.Cookies.Add(cookie);
-            Response.Redirect("Home.aspx");
+                var usuario = new Usuario() { nombreUsuario = UsuarioTextBox.Text, contrasena = ContraseñaTextBox.Text };
+                var result = GestorSistema.ObtenerInstancia().RealizarLogIn(usuario);
+
+                switch (result)
+                {
+
+                    case 1:
+
+                        var patentesPorFamilia = GestorDePatentes.ObtenerInstancia().ObtenerPatentesParaUnUsuarioPorFamilia(usuario);
+
+                        String patentes = "";
+                        patentesPorFamilia.ForEach(p =>
+                        {
+
+                            if (patentes == "")
+                            {
+                                patentes = p.patente.nombre;
+                            }
+                            else
+                            {
+                                patentes = patentes + "," + p.patente.nombre;
+                            }
+                        });
+
+                        var cookie = new HttpCookie("EstudioExpress_Usuario", GestorDeEncriptacion.EncriptarAes(UsuarioTextBox.Text + "|" + patentes));
+
+                        Response.Cookies.Add(cookie);
+                        Response.Redirect("Home.aspx");
+                        break;
+
+                    case 0:
+                        //NO SE ENCUENTRA
+                        break;
+                    case 2:
+                        //SE BLOQUEO EL USUARIO
+                        break;
+                }
+
+
+
+            }
+
+
+
         }
     }
 }

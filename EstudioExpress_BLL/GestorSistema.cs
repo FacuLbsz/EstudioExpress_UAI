@@ -233,6 +233,7 @@ public class GestorSistema
             GestorDeUsuarios.ObtenerInstancia().DesbloquearUsuario(usuarioLogin);
         }
         this.usuarioEnSesion = usuarioLogin;
+        usuario.identificador = usuarioLogin.identificador;
 
         EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Login", criticidad = 3, funcionalidad = "LOGIN", usuario = ObtenerUsuarioEnSesion() };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
@@ -350,9 +351,9 @@ public class GestorSistema
         return 1;
     }
 
-    public bool ConsultarPatentePorUsuario(String patente)
+    public bool ConsultarPatentePorUsuario(String patente, int usuario)
     {
-        var patenteUsuarios = baseDeDatos.ConsultarBase(String.Format("select esPermisiva from patenteusuario inner join patente on patente.idPatente = patenteusuario.Patente_idPatente inner join usuario on patenteusuario.Usuario_idUsuario = usuario.idUsuario where patenteusuario.Usuario_idUsuario = {0} and patente.nombre = '{1}' and usuario.habilitado = 1", usuarioEnSesion.identificador, patente));
+        var patenteUsuarios = baseDeDatos.ConsultarBase(String.Format("select esPermisiva from patenteusuario inner join patente on patente.idPatente = patenteusuario.Patente_idPatente inner join usuario on patenteusuario.Usuario_idUsuario = usuario.idUsuario where patenteusuario.Usuario_idUsuario = {0} and patente.nombre = '{1}' and usuario.habilitado = 1", usuario, patente));
         if (patenteUsuarios.Rows.Count > 0)
         {
             foreach (DataRow row in patenteUsuarios.Rows)

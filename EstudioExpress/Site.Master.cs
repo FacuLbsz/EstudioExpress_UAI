@@ -57,7 +57,7 @@ namespace EstudioExpress
                 {
                     if (isLogged)
                     {
-                        if (HttpContext.Current.User.IsInRole(rolAndName[0]))
+                        if (HttpContext.Current.User.IsInRole(rolAndName[1]))
                         {
                             NavigationMenu.Items.Add(item);
                         }

@@ -29,9 +29,13 @@ namespace EstudioExpress
 
             if (Request.Cookies["EstudioExpress_Usuario"] != null)
             {
-                GenericIdentity myIdentity = new GenericIdentity("Facundo.Vazquez");
                 
-                String[] roles = GestorDeEncriptacion.DesencriptarAes(Request.Cookies["EstudioExpress_Usuario"].Value).Split(',');
+                String[] usuarioYRoles = GestorDeEncriptacion.DesencriptarAes(Request.Cookies["EstudioExpress_Usuario"].Value).Split('|');
+
+                var nombreUsuario = usuarioYRoles[0];
+                String[] roles = usuarioYRoles[1].Split(',');
+
+                GenericIdentity myIdentity = new GenericIdentity(nombreUsuario);
                 GenericPrincipal myPrincipal = new GenericPrincipal(myIdentity, roles);
 
                 HttpContext.Current.User = myPrincipal;

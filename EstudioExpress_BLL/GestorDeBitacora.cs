@@ -91,7 +91,7 @@ public class GestorDeBitacora
 
     }
 
-    public async void RegistrarEvento(EventoBitacora evento)
+    public void RegistrarEvento(EventoBitacora evento)
     {
         String insertarEvento = "INSERT INTO Bitacora ( criticidad , descripcion , fecha , funcionalidad , Usuario_idUsuario , digitoVerificadorH) VALUES ({0},'{1}','{2}','{3}',{4},'{5}')";
         evento.descripcion = GestorDeEncriptacion.EncriptarAes(evento.descripcion);

@@ -29,7 +29,7 @@ public class GestorDeDigitoVerificador
     }
 
     //SDC Cambiar digito verificador de int a STRING
-    public async void ModificarDigitoVV(String tabla)
+    public void ModificarDigitoVV(String tabla)
     {
         DataTable dataTable = baseDeDatos.ConsultarBase("SELECT digitoVerificadorH from " + tabla);
 

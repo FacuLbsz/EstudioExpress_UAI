@@ -9,12 +9,12 @@
         <br />
         <div style="display: inline-grid; margin-bottom: 5px">
             <span>Usuario</span>
-            <asp:TextBox ID="TextBox1" runat="server" Style="align-content: center" Width="151px" Height="20px"></asp:TextBox>
+            <asp:TextBox ID="UsuarioTextBox" runat="server" Style="align-content: center" Width="151px" Height="20px"></asp:TextBox>
         </div>
         <br />
         <div style="display: inline-grid; margin-bottom: 5px">
             <span>Contraseña</span>
-            <asp:TextBox ID="TextBox2" runat="server" Style="margin-left: 0px" Width="151px" Height="20px"></asp:TextBox>
+            <asp:TextBox ID="ContraseñaTextBox" runat="server" Style="margin-left: 0px" Width="151px" Height="20px"></asp:TextBox>
         </div>
         <br />
         <br />

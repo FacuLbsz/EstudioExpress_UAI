@@ -2,16 +2,16 @@ USE[EstudioExpress]
 GO
 SET IDENTITY_INSERT [dbo].[usuario] ON 
 
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (3, N'hnkeEBj3FnsD5a/1QJeAvQ==', N'admin', N'admin', N'admin@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'E48FDED6437B5EA0EE723058D0F76DD0')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (4, N'm3DxqP3rImzVRT5P4u0uwQ==', N'Facundo', N'Vazquez', N'f@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'66BBA0EDA0ED6067C25723B6E831E7ED')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (5, N'buavlXCsgm+rIlJd6EKzXA==', N'Carlos', N'Sanchez', N'c@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'03CF833D95A3C453B601730DEE599743')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (6, N'30xiTR9zcAtlPIzL2pq2UQ==', N'Velo', N'Martelli', N'v@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'17F11B9B40A8AB174E9644D7D8698F03')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (7, N'RhPKr8BvAm5DOlTaVygreg==', N'Braian', N'Romero', N'b@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'ED53B54E5E86A3EE6F0C15703F9247A7')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (8, N'mm16CwFRejIYVgC98UfdaA==', N'Maxi', N'Meza', N'm@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'EBD28157EE2EF03F34AD8382008D2A57')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (9, N'HoyPzvXxk+B/a4+PaLak0Q==', N'Alan', N'Franco', N'a@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'F28EEB7C5D5B893582765266C2D8E32E')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (10, N'VIRCmBC1P50HIjTuQoWU8A==', N'Silvio', N'Romero', N's@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'05AC7F5AF8215FDFFDB23A0D1C0DD329')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (11, N'Y1kGcKzUF83vIrs9TfW7aQ==', N'Carlos', N'Tevez', N'ct@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'946A090603C266E042351E965972B448')
-INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (12, N'hYo0IrNtZNkJzLuLKtcxtw==', N'Dario', N'Benedeto', N'd@mail.com', N'9C7ACD47D05ABC324D55D5AD3E01D005',  1, N'2874B7998FB7A86E8756015CF0D7A8FE')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (3, N'hnkeEBj3FnsD5a/1QJeAvQ==', N'admin', N'admin', N'admin@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'E48FDED6437B5EA0EE723058D0F76DD0')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (4, N'm3DxqP3rImzVRT5P4u0uwQ==', N'Facundo', N'Vazquez', N'f@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'66BBA0EDA0ED6067C25723B6E831E7ED')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (5, N'buavlXCsgm+rIlJd6EKzXA==', N'Carlos', N'Sanchez', N'c@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'03CF833D95A3C453B601730DEE599743')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (6, N'30xiTR9zcAtlPIzL2pq2UQ==', N'Velo', N'Martelli', N'v@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'17F11B9B40A8AB174E9644D7D8698F03')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (7, N'RhPKr8BvAm5DOlTaVygreg==', N'Braian', N'Romero', N'b@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'ED53B54E5E86A3EE6F0C15703F9247A7')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (8, N'mm16CwFRejIYVgC98UfdaA==', N'Maxi', N'Meza', N'm@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'EBD28157EE2EF03F34AD8382008D2A57')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (9, N'HoyPzvXxk+B/a4+PaLak0Q==', N'Alan', N'Franco', N'a@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'F28EEB7C5D5B893582765266C2D8E32E')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (10, N'VIRCmBC1P50HIjTuQoWU8A==', N'Silvio', N'Romero', N's@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'05AC7F5AF8215FDFFDB23A0D1C0DD329')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (11, N'Y1kGcKzUF83vIrs9TfW7aQ==', N'Carlos', N'Tevez', N'ct@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'946A090603C266E042351E965972B448')
+INSERT [dbo].[usuario] ([idUsuario], [nombreUsuario], [nombre], [apellido], [email], [contrasena], [habilitado], [digitoVerificadorH]) VALUES (12, N'hYo0IrNtZNkJzLuLKtcxtw==', N'Dario', N'Benedeto', N'd@mail.com', N'1A1DC91C907325C69271DDF0C944BC72',  1, N'2874B7998FB7A86E8756015CF0D7A8FE')
 SET IDENTITY_INSERT [dbo].[usuario] OFF
 
 SET IDENTITY_INSERT [dbo].[digitoverificadorvertical] ON 
@@ -23,98 +23,33 @@ INSERT [dbo].[digitoverificadorvertical] ([idDigitoVerificadorVertical], [tabla]
 SET IDENTITY_INSERT [dbo].[digitoverificadorvertical] OFF
 SET IDENTITY_INSERT [dbo].[familia] ON 
 
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (1, N'Gzrqcn0yM9BMAD1YuT9AaQ==', 1)
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (2, N'LP60jnk2hJ7ABj0q/2mVww==', 1)
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (3, N'+Uqtwn/q0zArrc86oPPP4Q==', 1)
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (5, N'b/yNC5uVFbmc/ABLzN0rRg==', 1)
+INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (1, N'S/SMKX5LO5GGBoiPTVchIg==', 1)
+INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (2, N'S2EAyzryR4w0w+5YG3diAQ==', 1)
+INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (3, N'R3l5/+vqp3A+g4mvdpe5RQ==', 1)
 SET IDENTITY_INSERT [dbo].[familia] OFF
 
 SET IDENTITY_INSERT [dbo].[patente] ON 
 
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (1, N'MI_ESTADO')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (2, N'EVALUAR_EQUIPOS_A_CARGO')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (3, N'REPORTE_OBJETIVOS_POR_EMPLEADO')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (4, N'REPORTE_OBJETIVOS_POR_EQUIPO')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (5, N'REPORTE_BENEFICIO_POR_EMPLEADO')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (12, N'BITACORA')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (13, N'BACKUP')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (14, N'RESTORE')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (15, N'ADMINISTRACION_USUARIOS_CREACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (16, N'ADMINISTRACION_USUARIOS_MODIFICACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (17, N'ADMINISTRACION_USUARIOS_ELIMINACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (18, N'ADMINISTRACION_FAMILIAS_CREACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (19, N'ADMINISTRACION_FAMILIAS_MODIFICACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (20, N'ADMINISTRACION_FAMILIAS_ELIMINACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (21, N'ADMINISTRACION_GRUPOS_CREACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (22, N'ADMINISTRACION_GRUPOS_MODIFICACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (23, N'ADMINISTRACION_GRUPOS_ELIMINACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (24, N'ADMINISTRACION_EQUIPOS_CREACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (25, N'ADMINSITRACION_EQUIPOS_MODIFICACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (26, N'ADMINISTRACION_EQUIPOS_ELIMINACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (27, N'ADMINISTRACION_BENEFICIOS_CREACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (28, N'ADMINISTRACION_BENEFICIOS_MODIFICACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (29, N'ADMINISTRACION_BENEFICIOS_ELIMINACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (30, N'ADMINISTRACION_OBJETIVOS_CREACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (31, N'ADMINISTRACION_OBJETIVOS_MODIFICACION')
-INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (32, N'ADMINISTRACION_OBJETIVOS_ELIMINACION')
+INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (1, N'BITACORA')
+INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (2, N'ADMINISRAR_CURSOS')
+INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (3, N'CONSULTAR_CURSOS')
+INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (4, N'MIS_CURSOS')
 SET IDENTITY_INSERT [dbo].[patente] OFF
 
 SET IDENTITY_INSERT [dbo].[familiapatente] ON 
 
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (1, 2, 1, N'3C59DC048E8850243BE8079A5C74D079')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (2, 3, 1, N'C16A5320FA475530D9583C34FD356EF5')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (3, 4, 1, N'3416A75F4CEA9109507CACD8E2F2AEFC')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (4, 5, 1, N'2838023A778DFAECDC212708F721B788')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (5, 21, 1, N'EB163727917CBBA1EEA208541A643E74')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (6, 22, 1, N'060AD92489947D410D897474079C1477')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (7, 23, 1, N'9B04D152845EC0A378394003C96DA594')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (8, 24, 1, N'F340F1B1F65B6DF5B5E3F94D95B11DAF')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (9, 25, 1, N'19F3CD308F1455B3FA09A282E0D496F4')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (10, 26, 1, N'B1A59B315FC9A3002CE38BBE070EC3F5')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (11, 27, 1, N'7F100B7B36092FB9B06DFB4FAC360931')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (12, 28, 1, N'E3796AE838835DA0B6F6EA37BCF8BCB7')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (13, 29, 1, N'9C838D2E45B2AD1094D42F4EF36764F6')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (14, 30, 1, N'34ED066DF378EFACC9B924EC161E7639')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (15, 31, 1, N'9DFCD5E558DFA04AAF37F137A1D9D3E5')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (16, 32, 1, N'CAF1A3DFB505FFED0D024130F58C5CFA')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (17, 1, 2, N'C20AD4D76FE97759AA27A0C99BFF6710')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (18, 2, 3, N'37693CFC748049E45D87B8C7D8B9AACD')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (19, 3, 3, N'182BE0C5CDCD5072BB1864CDEE4D3D6E')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (20, 4, 3, N'17E62166FC8586DFA4D1BC0E1742C08B')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (21, 5, 3, N'D82C8D1619AD8176D665453CFB2E55F0')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (56, 12, 5, N'3DEF184AD8F4755FF269862EA77393DD')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (57, 13, 5, N'7F1DE29E6DA19D22B51C68001E7E0E54')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (58, 14, 5, N'2B24D495052A8CE66358EB576B8912C8')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (59, 15, 5, N'2A79EA27C279E471F4D180B08D62B00A')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (61, 17, 5, N'82161242827B703E6ACF9C726942A1E4')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (62, 16, 5, N'9766527F2B5D3E95D4A733FCFB77BD7E')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (63, 18, 5, N'EECCA5B6365D9607EE5A9D336962C534')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (64, 19, 5, N'0336DCBAB05B9D5AD24F4333C7658A0E')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (65, 20, 5, N'EAE27D77CA20DB309E056E3D2DCD7D69')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (75, 12, 5, N'3DEF184AD8F4755FF269862EA77393DD')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (76, 13, 5, N'7F1DE29E6DA19D22B51C68001E7E0E54')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (77, 14, 5, N'2B24D495052A8CE66358EB576B8912C8')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (78, 15, 5, N'2A79EA27C279E471F4D180B08D62B00A')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (79, 17, 5, N'82161242827B703E6ACF9C726942A1E4')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (80, 16, 5, N'9766527F2B5D3E95D4A733FCFB77BD7E')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (81, 18, 5, N'EECCA5B6365D9607EE5A9D336962C534')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (82, 19, 5, N'0336DCBAB05B9D5AD24F4333C7658A0E')
-INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (83, 20, 5, N'EAE27D77CA20DB309E056E3D2DCD7D69')
+INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (1, 1, 1, N'3C59DC048E8850243BE8079A5C74D079')
+INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (2, 2, 2, N'3C59DC048E8850243BE8079A5C74D079')
+INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (3, 3, 3, N'3C59DC048E8850243BE8079A5C74D079')
+INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (4, 4, 3, N'3C59DC048E8850243BE8079A5C74D079')
 SET IDENTITY_INSERT [dbo].[familiapatente] OFF
 SET IDENTITY_INSERT [dbo].[familiausuario] ON 
 
-INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (1, 1, 4)
-INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (2, 3, 11)
-INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (3, 2, 12)
-INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (4, 2, 9)
-INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (5, 2, 6)
-INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (7, 5, 3)
+INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (1, 1, 3)
+INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (2, 2, 4)
+INSERT [dbo].[familiausuario] ([idFamiliaUsuario], [Familia_idFamilia], [Usuario_idUsuario]) VALUES (3,	3, 5)
 SET IDENTITY_INSERT [dbo].[familiausuario] OFF
 
-SET IDENTITY_INSERT [dbo].[patenteusuario] ON 
-
-INSERT [dbo].[patenteusuario] ([idPatente], [esPermisiva], [Patente_idPatente], [Usuario_idUsuario], [digitoVerificadorH]) VALUES (1, 0, 12, 3, N'EB62F6B9306DB575C2D596B1279627A4')
-SET IDENTITY_INSERT [dbo].[patenteusuario] OFF
 
 SET IDENTITY_INSERT [dbo].[bitacora] ON 
 
