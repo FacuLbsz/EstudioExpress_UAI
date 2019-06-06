@@ -13,10 +13,12 @@ namespace EstudioExpress
 
         static SiteMaster()
         {
-            menuItems.Add(newMenuItem("TODOS_HOME", "~/Pages/Home.aspx", "Página principal"));
-            menuItems.Add(newMenuItem("WEBMASTER_BITACORA", "~/Pages/Bitacora.aspx", "Bitacora"));
-            menuItems.Add(newMenuItem("CLIENTE_CURSOS", "~/Pages/Bitacora.aspx", "Cursos"));
-            menuItems.Add(newMenuItem("TODOS_NOSOTROS", "~/Pages/Nosotros.aspx", "Nosotros"));
+            menuItems.Add(newMenuItem("TODOS-HOME", "~/Pages/Home.aspx", "Página principal"));
+            menuItems.Add(newMenuItem("WEBMASTER-BITACORA", "~/Pages/Bitacora.aspx", "Bitacora"));
+            menuItems.Add(newMenuItem("TUTOR-ADMINISRAR_CURSOS", "~/Pages/Home.aspx", "Administrar Cursos"));
+            menuItems.Add(newMenuItem("CLIENTE-CONSULTAR_CURSOS", "~/Pages/Home.aspx", "Consultar Cursos"));
+            menuItems.Add(newMenuItem("CLIENTE-MIS_CURSOS", "~/Pages/Home.aspx", "Mis Cursos"));
+            menuItems.Add(newMenuItem("TODOS-NOSOTROS", "~/Pages/Nosotros.aspx", "Nosotros"));
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -50,7 +52,7 @@ namespace EstudioExpress
             foreach (MenuItem item in menuItems)
             {
 
-                String[] rolAndName = item.Value.ToString().Split('_');
+                String[] rolAndName = item.Value.ToString().Split('-');
 
 
                 if (rolAndName[0] != "TODOS")

@@ -22,9 +22,9 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body class="body-master" style="overflow:hidden;">
+<body class="body-master">
     <form runat="server">
-        <div class="page" style="background-image: url('/Images/homeBackground.jpg'); height: 753px; width:100%;">
+        <div class="page" style="width:100%;">
             <div class="header">
                 <div class="title">
                     <h1>Estudio express
