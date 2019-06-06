@@ -9,6 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - EstudioExpress</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -17,15 +22,15 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body class="body-master">
+<body class="body-master" style="overflow:hidden;">
     <form runat="server">
-        <div class="page">
+        <div class="page" style="background-image: url('/Images/homeBackground.jpg'); height: 753px; width:100%;">
             <div class="header">
                 <div class="title">
                     <h1>Estudio express
                     </h1>
                 </div>
-                <div class="loginDisplay">
+                <div class="loginDisplay" <%--style="background-image: url('/Images/homeBackground.jpg')"--%>>
                     <asp:Panel ID="PanelLogin" runat="server">
                         <a href="~/Pages/Login.aspx" id="HeadLoginStatus" runat="server">Iniciar sesión</a>
                     </asp:Panel>
@@ -53,7 +58,8 @@
                     </asp:Menu>
                 </div>
             </div>
-            <div class="main">
+            <br />
+            <div class="main" <%--style="background-image: url('/Images/homeBackground.jpg')"--%>>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
         </div>

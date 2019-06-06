@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstudioExpress.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
@@ -57,10 +58,11 @@ namespace EstudioExpress
                         break;
 
                     case 0:
-                        //NO SE ENCUENTRA
+                        MessageBox.Show(this, "Los datos ingresados son incorrectos.");
                         break;
                     case 2:
                         //SE BLOQUEO EL USUARIO
+                        MessageBox.Show(this, "Se ha bloqueado el usuario.");
                         break;
                 }
 

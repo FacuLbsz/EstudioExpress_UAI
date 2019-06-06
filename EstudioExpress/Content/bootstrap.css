@@ -353,6 +353,7 @@ a:focus {
 
 img {
   vertical-align: middle;
+    margin-left: 650px;
 }
 
 .img-responsive {
@@ -383,8 +384,9 @@ img {
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  bottom: inherit;
   border: 0;
   border-top: 1px solid #eeeeee;
 }

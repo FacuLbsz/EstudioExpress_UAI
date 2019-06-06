@@ -13,7 +13,6 @@ public class Familia
     public String nombre { get; set; }
     public List<Patente> patentesAsignadas { get; set; }
     public List<Usuario> usuariosAsignados { get; set; }
-    public Patente m_Patente { get; set; }
 
     public Familia()
     {

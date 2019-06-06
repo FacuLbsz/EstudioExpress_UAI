@@ -10,6 +10,7 @@ public class GestorDeBitacora
     private static GestorDeBitacora instancia;
     private GestorDeDigitoVerificador m_GestorDeDigitoVerificador;
     private BaseDeDatos baseDeDatos;
+    private const string SetFormatDate = "set dateformat dmy";
     //SDC Agregar llamado para obtener usuario desencriptado en diagrama de secuencia
     private GestorDeUsuarios gestorDeUsuarios;
 
@@ -93,7 +94,7 @@ public class GestorDeBitacora
 
     public void RegistrarEvento(EventoBitacora evento)
     {
-        String insertarEvento = "INSERT INTO Bitacora ( criticidad , descripcion , fecha , funcionalidad , Usuario_idUsuario , digitoVerificadorH) VALUES ({0},'{1}','{2}','{3}',{4},'{5}')";
+        String insertarEvento = SetFormatDate + " INSERT INTO Bitacora ( criticidad , descripcion , fecha , funcionalidad , Usuario_idUsuario , digitoVerificadorH) VALUES ({0},'{1}','{2}','{3}',{4},'{5}')";
         evento.descripcion = GestorDeEncriptacion.EncriptarAes(evento.descripcion);
 
         String digitoVerficadorH = GestorDeDigitoVerificador.ObtenerDigitoVH(new List<String>() { evento.criticidad.ToString(), evento.descripcion, evento.fecha.ToString(), evento.funcionalidad, evento.usuario == null ? "" : evento.usuario.identificador.ToString() });

@@ -12,7 +12,6 @@ public class PatenteUsuario
      public int identificador { get; set; }
      public Patente patente { get; set; }
      public Usuario usuario { get; set; }
-     public Usuario m_Usuario { get; set; }
 
     public PatenteUsuario()
     {

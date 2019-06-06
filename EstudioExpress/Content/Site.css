@@ -16,6 +16,17 @@ input,
 select,
 textarea {
     max-width: 280px;
+    font-size: 21px;
+    padding: 8px;
+}
+
+.MainContent_Image1 {
+    margin-right: -66px;
+}
+
+h2 {
+    font-size: 54px;
+    color: white;
 }
 
 

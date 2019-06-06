@@ -9,7 +9,6 @@ public class Patente
 {
     public int identificador { get; set; }
     public String nombre { get; set; }
-    public PatenteUsuario m_PatenteUsuario { get; set; }
 
     public static string MI_ESTADO = "MI_ESTADO";
     public static string EVALUAR_EQUIPOS_A_CARGO = "EVALUAR_EQUIPOS_A_CARGO";

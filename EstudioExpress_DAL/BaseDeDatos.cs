@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 public class BaseDeDatos
 {
 
-    private static String sqlString = "Persist Security Info=False;User ID=sa;Password=qwer1234;Initial Catalog=EstudioExpress;Server=DESKTOP-VA9KCI4\\SQLEXPRESS";
+    private static String sqlString = "Integrated Security=SSPI;Initial Catalog=EstudioExpress;Server=.\\SQLEXPRESS";
     private SqlConnection sqlConnection;
     private static BaseDeDatos instancia;
 
