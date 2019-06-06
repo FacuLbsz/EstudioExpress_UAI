@@ -29,8 +29,12 @@ h2 {
     color: white;
 }
 
+h4 {
+    font-size: 54px;
+    color: white;
+}
 
-/* Responsive: Portrait tablets and up */
+/* Responsive: Po  rtrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
         margin-top: 20px;

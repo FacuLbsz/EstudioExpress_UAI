@@ -18,7 +18,7 @@ namespace EstudioExpress
             menuItems.Add(newMenuItem("TUTOR-ADMINISRAR_CURSOS", "~/Pages/Home.aspx", "Administrar Cursos"));
             menuItems.Add(newMenuItem("CLIENTE-CONSULTAR_CURSOS", "~/Pages/Home.aspx", "Consultar Cursos"));
             menuItems.Add(newMenuItem("CLIENTE-MIS_CURSOS", "~/Pages/Home.aspx", "Mis Cursos"));
-            menuItems.Add(newMenuItem("TODOS-NOSOTROS", "~/Pages/Nosotros.aspx", "Nosotros"));
+            menuItems.Add(newMenuItem("TODOS-NOSOTROS", "~/Pages/About.aspx", "Nosotros"));
         }
 
         protected void Page_Load(object sender, EventArgs e)
