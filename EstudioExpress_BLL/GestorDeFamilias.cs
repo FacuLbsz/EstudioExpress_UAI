@@ -127,7 +127,7 @@ public class GestorDeFamilias
         return baseDeDatos.ModificarBase(String.Format("delete familia where idFamilia = {0}", familia.identificador));
     }
 
-    public int CrearFamilia(Familia familia)
+    public int CrearFamilia(Familia familia, int usuarioEnSesion)
     {
         if (baseDeDatos.ConsultarBase(String.Format("SELECT * FROM FAMILIA WHERE nombre = '{0}'", GestorDeEncriptacion.EncriptarAes(familia.nombre))).Rows.Count > 0)
         {
@@ -137,7 +137,7 @@ public class GestorDeFamilias
         var registros = baseDeDatos.ModificarBase(String.Format("INSERT INTO FAMILIA (nombre,habilitado) VALUES ('{0}', 1)", GestorDeEncriptacion.EncriptarAes(familia.nombre)));
 
 
-        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se crea la familia " + familia.nombre, criticidad = 3, funcionalidad = "ADMINISTRACION DE FAMILIAS", usuario = GestorSistema.ObtenerInstancia().ObtenerUsuarioEnSesion() };
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se crea la familia " + familia.nombre, criticidad = 3, funcionalidad = "ADMINISTRACION DE FAMILIAS", usuario = new Usuario() { identificador = usuarioEnSesion } };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
 
 
