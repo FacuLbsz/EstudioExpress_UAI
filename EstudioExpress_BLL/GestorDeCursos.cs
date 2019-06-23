@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 public class GestorDeCursos
@@ -13,13 +10,14 @@ public class GestorDeCursos
 
     private String sqlCrearCursoConEpisodios = 
     "begin tran"
-    + "DECLARE @idCurso int;"
-    + "INSERT INTO CURSO (nombre ,duracion ,descripcion ,precio) VALUES ('%nombre%' ,%duracion% ,'%descripcion%' ,%precio%);"
-    + "SET @idCurso = (select idCurso from Curso where curso.nombre = '%nombre%');"
+    + "DECLARE @AuxTable TABLE (id INT);"
+    + "DECLARE @id int;"
+    + "INSERT INTO CURSO (nombre ,duracion ,descripcion ,precio) OUTPUT INSERTED.idCurso INTO @AuxTable(id) VALUES ('%nombre%' ,%duracion% ,'%descripcion%' ,%precio%);"
+    + "SET @id = (select id from AuxTable);"
     + "%episodios%"
     + "commit tran";
 
-    private String sqlCrearEpisodio = "INSERT INTO EPISODIO (numeroEpisodio, direccionVideo, descripcion, idCurso) VALUES (%numeroEpisodio%, '%direccionVideo%', '%descripcion%', @idCurso);";
+    private String sqlCrearEpisodio = "INSERT INTO EPISODIO (numeroEpisodio, direccionVideo, descripcion, idCurso) VALUES (%numeroEpisodio%, '%direccionVideo%', '%descripcion%', @id);";
 
 
     private GestorDeCursos()
@@ -119,7 +117,7 @@ public class GestorDeCursos
 
     public List<Episodio> ObtenerEpisodiosDeUnCurso(int curso)
     {
-        var dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * FROM EPISODIO where episodio.idCurso = {0}", curso));
+        var dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * FROM EPISODIO where episodio.idCurso = {0} order by numeroEpisodio ASC", curso));
 
         List<Episodio> episodios = new List<Episodio>();
         foreach (DataRow row in dataTable.Rows)

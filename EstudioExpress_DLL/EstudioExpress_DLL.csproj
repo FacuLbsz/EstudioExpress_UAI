@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Curso.cs" />
+    <Compile Include="DetalleFactura.cs" />
     <Compile Include="Episodio.cs" />
     <Compile Include="EntidadDuplicadaExcepcion.cs" />
     <Compile Include="EventoBitacora.cs" />
