@@ -44,7 +44,7 @@ public class GestorDeBitacora
     /// <returns></returns>
     public List<EventoBitacora> ConsultarEventos(int? criticidad, int? idUsuario, DateTime? fechaDesde, DateTime? fechaHasta)
     {
-        DataTable dataTable = baseDeDatos.ConsultarBase("Select * from Bitacora " + CrearWhere(criticidad, idUsuario, fechaDesde, fechaHasta));
+        DataTable dataTable = baseDeDatos.ConsultarBase("Select * from Bitacora " + CrearWhere(criticidad, idUsuario, fechaDesde, fechaHasta) +  " ORDER BY fecha DESC");
 
         List<EventoBitacora> eventosBitacora = new List<EventoBitacora>();
         foreach (DataRow row in dataTable.Rows)

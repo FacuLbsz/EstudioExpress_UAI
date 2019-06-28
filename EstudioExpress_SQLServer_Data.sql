@@ -23,9 +23,9 @@ INSERT [dbo].[digitoverificadorvertical] ([idDigitoVerificadorVertical], [tabla]
 SET IDENTITY_INSERT [dbo].[digitoverificadorvertical] OFF
 SET IDENTITY_INSERT [dbo].[familia] ON 
 
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (1, N'S/SMKX5LO5GGBoiPTVchIg==', 1)
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (2, N'S2EAyzryR4w0w+5YG3diAQ==', 1)
-INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (3, N'R3l5/+vqp3A+g4mvdpe5RQ==', 1)
+INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (1, N'S/SMKX5LO5GGBoiPTVchIg==', 1) --WEBMASTER
+INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (2, N'S2EAyzryR4w0w+5YG3diAQ==', 1) --TUTOR
+INSERT [dbo].[familia] ([idFamilia], [nombre], [habilitado]) VALUES (3, N'R3l5/+vqp3A+g4mvdpe5RQ==', 1) --CLIENTE
 SET IDENTITY_INSERT [dbo].[familia] OFF
 
 SET IDENTITY_INSERT [dbo].[patente] ON 

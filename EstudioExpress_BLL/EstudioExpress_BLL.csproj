@@ -49,8 +49,10 @@
       <DependentUpon>EstudioExpress.settings</DependentUpon>
     </Compile>
     <Compile Include="GestorDeBitacora.cs" />
+    <Compile Include="GestorDeCursos.cs" />
     <Compile Include="GestorDeDigitoVerificador.cs" />
     <Compile Include="GestorDeEncriptacion.cs" />
+    <Compile Include="GestorDeFacturacion.cs" />
     <Compile Include="GestorDeFamilias.cs" />
     <Compile Include="GestorDePatentes.cs" />
     <Compile Include="GestorDeUsuarios.cs" />

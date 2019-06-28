@@ -40,8 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Curso.cs" />
+    <Compile Include="DetalleFactura.cs" />
+    <Compile Include="Episodio.cs" />
     <Compile Include="EntidadDuplicadaExcepcion.cs" />
     <Compile Include="EventoBitacora.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="Familia.cs" />
     <Compile Include="Patente.cs" />
     <Compile Include="PatenteUsuario.cs" />

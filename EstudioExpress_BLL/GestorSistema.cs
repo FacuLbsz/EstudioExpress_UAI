@@ -20,13 +20,7 @@ public class GestorSistema
     //SDC Relacion con gestor de digito verificador GestorDeDigitoVerificador
 
     private BaseDeDatos baseDeDatos;
-    private Usuario usuarioEnSesion;
-
-    public Usuario ObtenerUsuarioEnSesion()
-    {
-        return this.usuarioEnSesion;
-    }
-
+    
     private GestorSistema()
     {
         baseDeDatos = BaseDeDatos.ObtenerInstancia();
@@ -236,7 +230,6 @@ public class GestorSistema
     /// <returns></returns>
     public int RealizarLogIn(Usuario usuario)
     {
-        this.usuarioEnSesion = usuario;
         var nombre = usuario.nombreUsuario;
         Usuario usuarioLogin = GestorDeUsuarios.ObtenerInstancia().RealizarLogIn(usuario);
 
@@ -254,10 +247,10 @@ public class GestorSistema
         {
             GestorDeUsuarios.ObtenerInstancia().DesbloquearUsuario(usuarioLogin);
         }
-        this.usuarioEnSesion = usuarioLogin;
+        
         usuario.identificador = usuarioLogin.identificador;
 
-        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Login", criticidad = 3, funcionalidad = "LOGIN", usuario = ObtenerUsuarioEnSesion() };
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Login", criticidad = 3, funcionalidad = "LOGIN", usuario = new Usuario() { identificador = usuarioLogin.identificador } };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
         return 1;
     }
@@ -294,7 +287,7 @@ public class GestorSistema
     /// <param name="rutaDestino"></param>
     /// <param name="cantidadVolumenes"></param>
     /// <returns></returns>
-    public int RealizarBackup(String rutaDestino, int cantidadVolumenes)
+    public int RealizarBackup(String rutaDestino, int cantidadVolumenes, int usuarioEnSesion)
     {
         try
         {
@@ -330,7 +323,7 @@ public class GestorSistema
             return 0;
         }
 
-        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se exporta backup de la base de datos en " + cantidadVolumenes + " particiones en la ruta " + rutaDestino, criticidad = 1, funcionalidad = "REALIZAR BACKUP", usuario = GestorSistema.ObtenerInstancia().ObtenerUsuarioEnSesion() };
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se exporta backup de la base de datos en " + cantidadVolumenes + " particiones en la ruta " + rutaDestino, criticidad = 1, funcionalidad = "REALIZAR BACKUP", usuario = new Usuario() { identificador = usuarioEnSesion } };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
 
         return 1;
@@ -341,7 +334,7 @@ public class GestorSistema
     /// </summary>
     /// <param name="rutaOrigen"></param>
     /// <returns></returns>
-    public int RealizarRestore(String rutaOrigen)
+    public int RealizarRestore(String rutaOrigen, int usuarioEnSesion)
     {
         try
         {
@@ -383,7 +376,7 @@ public class GestorSistema
         }
 
 
-        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "El usuario " + GestorSistema.ObtenerInstancia().ObtenerUsuarioEnSesion().nombreUsuario + " realiza la restauracion de la base de datos", criticidad = 1, funcionalidad = "REALIZAR RESTORE" };
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "El usuario " + GestorDeUsuarios.ObtenerInstancia().ObtenerUsuario(usuarioEnSesion).nombreUsuario + " realiza la restauracion de la base de datos", criticidad = 1, funcionalidad = "REALIZAR RESTORE" };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
 
         return 1;
@@ -405,6 +398,6 @@ public class GestorSistema
                 return Convert.ToBoolean(row["esPermisiva"]);
             }
         }
-        return baseDeDatos.ConsultarBase(String.Format("select * from familiausuario inner join familiapatente on familiapatente.Familia_idFamilia = familiausuario.Familia_idFamilia inner join patente on patente.idPatente = familiapatente.Patente_idPatente inner join familia on familiapatente.Familia_idFamilia = familia.idFamilia inner join usuario on familiausuario.Usuario_idUsuario = usuario.idUsuario where familiausuario.Usuario_idUsuario = {0} and patente.nombre = '{1}' and familia.habilitado = 1 and usuario.habilitado = 1", usuarioEnSesion.identificador, patente)).Rows.Count > 0;
+        return baseDeDatos.ConsultarBase(String.Format("select * from familiausuario inner join familiapatente on familiapatente.Familia_idFamilia = familiausuario.Familia_idFamilia inner join patente on patente.idPatente = familiapatente.Patente_idPatente inner join familia on familiapatente.Familia_idFamilia = familia.idFamilia inner join usuario on familiausuario.Usuario_idUsuario = usuario.idUsuario where familiausuario.Usuario_idUsuario = {0} and patente.nombre = '{1}' and familia.habilitado = 1 and usuario.habilitado = 1", usuario, patente)).Rows.Count > 0;
     }
 }
