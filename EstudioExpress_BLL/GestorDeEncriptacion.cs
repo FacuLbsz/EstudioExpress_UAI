@@ -5,6 +5,9 @@ using System.Text;
 using System.IO;
 using System.Security.Cryptography;
 
+/// <summary>
+/// La clase maneja toda la logica implicada en la gestion de la encriptacion.
+/// </summary>
 public class GestorDeEncriptacion
 {
 
@@ -19,7 +22,11 @@ public class GestorDeEncriptacion
 
     }
 
-    //SDC Modificar List por String como argumentos y retorno
+    /// <summary>
+    /// Se desencripta la informacion recibida por paramatro mediante el algoritmo AES.
+    /// </summary>
+    /// <param name="informacionEncriptada"></param>
+    /// <returns>dato desencriptado</returns>
     public static String DesencriptarAes(String informacionEncriptada)
     {
         string informacionDesencriptada = null;
@@ -47,8 +54,11 @@ public class GestorDeEncriptacion
         return informacionDesencriptada;
     }
 
-
-    //SDC Modificar List por String como argumentos y retorno
+    /// <summary>
+    /// Se encripta la informacion el dato recibido por parametro aplicando AES 
+    /// </summary>
+    /// <param name="informacionAEncriptar"></param>
+    /// <returns>dato encriptado</returns>
     public static String EncriptarAes(String informacionAEncriptar)
     {
         byte[] informacionEncriptada;
@@ -77,7 +87,11 @@ public class GestorDeEncriptacion
         return Convert.ToBase64String(informacionEncriptada);
     }
 
-    //SDC Cambiar List por String
+    /// <summary>
+    /// Encripta la informacion aplicando MD5.
+    /// </summary>
+    /// <param name="informacion"></param>
+    /// <returns>dato encriptado con MD5</returns>
     public static String EncriptarMD5(String informacion)
     {
         using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
@@ -94,6 +108,11 @@ public class GestorDeEncriptacion
         }
     }
 
+    /// <summary>
+    /// Desencripta la informacion aplicando RSA
+    /// </summary>
+    /// <param name="informacionEncriptada"></param>
+    /// <returns>dato desencriptado con RSA</returns>
     public static String DesencriptarRSA(String informacionEncriptada)
     {
         RSACryptoServiceProvider rsaProvider = new RSACryptoServiceProvider(2028);

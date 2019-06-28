@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-
-
+/// <summary>
+/// Propiedades que representan la relacion entre la patente y el usuario.
+/// </summary>
 public class PatenteUsuario
 {
 

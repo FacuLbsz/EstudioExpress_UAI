@@ -2,6 +2,9 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
+/// <summary>
+/// Toda la logica que realiza conexion y queries contra la BD
+/// </summary>
 public class BaseDeDatos
 {
 
@@ -31,6 +34,11 @@ public class BaseDeDatos
         return instancia;
     }
 
+    /// <summary>
+    /// A traves de una query recibida por parametro obtenemos un set de datos.
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns></returns>
     public DataTable ConsultarBase(String query)
     {
         AbrirConexion();
@@ -43,6 +51,11 @@ public class BaseDeDatos
         return dataTable;
     }
 
+    /// <summary>
+    /// A traves de una query recibida por parametro modificamos uno o mas registros de una tabla.
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns></returns>
     public int ModificarBase(String query)
     {
         AbrirConexion();
@@ -51,21 +64,36 @@ public class BaseDeDatos
         return filasAfectadas;
     }
 
+    /// <summary>
+    /// Se abre la conexion a la BD
+    /// </summary>
     private void AbrirConexion()
     {
         sqlConnection.Open();
     }
 
+    /// <summary>
+    /// Se cierra la conexion a la BD.
+    /// </summary>
     private void CerrarConexion()
     {
         sqlConnection.Close();
     }
 
+    /// <summary>
+    /// Se crea un objeto Command
+    /// </summary>
+    /// <param name="comandoSQL"></param>
+    /// <returns></returns>
     private SqlCommand CrearComandoSQL(String comandoSQL)
     {
         return new SqlCommand(comandoSQL, sqlConnection);
     }
 
+    /// <summary>
+    /// Se obtiene el backup de la BD
+    /// </summary>
+    /// <returns></returns>
     public String ObtenerBackup()
     {
         var rutaBackup = "";
@@ -99,6 +127,10 @@ public class BaseDeDatos
         return rutaBackup;
     }
 
+    /// <summary>
+    /// Realizamos el restore de la BD a una ruta especifica.
+    /// </summary>
+    /// <param name="ruta"></param>
     public void RealizarRestore(String ruta)
     {
         var nombreBaseDeDatos = sqlConnection.Database.ToString();

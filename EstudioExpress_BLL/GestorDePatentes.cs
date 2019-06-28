@@ -4,6 +4,9 @@ using System.Text;
 using System.IO;
 using System.Data;
 
+/// <summary>
+/// Clase que maneja toda la logica de las patentes del usuario.
+/// </summary>
 public class GestorDePatentes
 {
 
@@ -27,7 +30,11 @@ public class GestorDePatentes
         return instancia;
     }
 
-    //SDC Modificar parametro de entrada como PatenteUsuario
+    /// <summary>
+    /// Se genera la query que asigna un usuario a una patente
+    /// </summary>
+    /// <param name="patenteUsuario"></param>
+    /// <returns></returns>
     public int AsignarAUnUsuario(PatenteUsuario patenteUsuario)
     {
         var usuario = patenteUsuario.usuario.identificador.ToString();
@@ -53,6 +60,11 @@ public class GestorDePatentes
         return registros;
     }
 
+    /// <summary>
+    /// Se genera la query la cual se trae todas las patentes para una familia especifica
+    /// </summary>
+    /// <param name="familia"></param>
+    /// <returns>Patentes</returns>
     public List<Patente> ObtenerPatentesParaUnaFamilia(Familia familia)
     {
         List<Patente> patentes = new List<Patente>();
@@ -65,6 +77,12 @@ public class GestorDePatentes
         return patentes;
     }
 
+    /// <summary>
+    /// Se crea la query la cual desasigna un usuario de una patente.
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <param name="patente"></param>
+    /// <returns></returns>
     public int DesasignarAUnUsuario(Usuario usuario, Patente patente)
     {
 
@@ -74,6 +92,10 @@ public class GestorDePatentes
         return registros;
     }
 
+    /// <summary>
+    /// Se crea la query que se trae todas las patentes de la tabla PATENTE
+    /// </summary>
+    /// <returns>Patentes</returns>
     public List<Patente> ObtenerPatentes()
     {
         var dataTable = baseDeDatos.ConsultarBase("SELECT * FROM PATENTE");
@@ -91,7 +113,11 @@ public class GestorDePatentes
         return patentes;
     }
 
-    //SDC modificar por ObtenerPatentesNoAsignadasAUnUsuario
+    /// <summary>
+    /// Se crea la query que se trae todas las patentes que no esten asignadas a un usuario especifico
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <returns></returns>
     public List<Patente> ObtenerPatentesNoAsignadasAUnUsuario(Usuario usuario)
     {
         var dataTable = baseDeDatos.ConsultarBase(String.Format("Select * from Patente where patente.idPatente not in(SELECT patenteusuario.Patente_idPatente FROM patenteusuario  where patenteusuario.Usuario_idUsuario = {0})", usuario.identificador));
@@ -110,6 +136,11 @@ public class GestorDePatentes
         return patentes;
     }
 
+    /// <summary>
+    /// Se crea la query en la cual se trae las patentes por usuario y por familia(enviado por parametro). 
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <returns></returns>
     public List<PatenteUsuario> ObtenerPatentesParaUnUsuarioPorFamilia(Usuario usuario)
     {
         var dataTable = baseDeDatos.ConsultarBase(String.Format("select patente.nombre, familiapatente.Patente_idPatente from familiapatente inner join patente on patente.idPatente = familiapatente.Patente_idPatente INNER JOIN familiausuario on familiausuario.familia_idFamilia = familiapatente.familia_idFamilia WHERE familiausuario.Usuario_idUsuario = {0}", usuario.identificador));
@@ -127,7 +158,12 @@ public class GestorDePatentes
 
         return patenteUsuarios;
     }
-    //SDC Modificar parametro de salida como Lista de PatenteUsuario
+
+    /// <summary>
+    /// Se crea la query en la cual se trae las patentes por usuario (enviado por parametro). 
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <returns></returns>
     public List<PatenteUsuario> ObtenerPatentesParaUnUsuario(Usuario usuario)
     {
 
@@ -147,7 +183,11 @@ public class GestorDePatentes
         return patenteUsuarios;
     }
 
-    //SDC A diagrama de secuencia de asignar patentes a familia obtener patentes no asignadas
+    /// <summary>
+    /// Se crea la query la cual se trae todas las patentes que no esten asignadas a una familia especifica.
+    /// </summary>
+    /// <param name="familia"></param>
+    /// <returns></returns>
     public List<Patente> ObtenerPatentesNoAsignadasAUnaFamilia(Familia familia)
     {
         var dataTable = baseDeDatos.ConsultarBase(String.Format("Select * from Patente where Patente.idPatente not in(SELECT familiapatente.Patente_idPatente FROM familiapatente  where familiapatente.Familia_idFamilia = {0})", familia.identificador));
@@ -166,13 +206,14 @@ public class GestorDePatentes
         return patentes;
     }
 
-    public int VerificarPatenteEscencialEnDesasignacion(Patente patente, Usuario usuario)
-    {
-
-        return 0;
-    }
-
-    //SDC agregar nuevos parametros de entrada
+    /// <summary>
+    /// Se crea la query la cual se verifica si el usuario tiene asignada una patente escencial.
+    /// </summary>
+    /// <param name="patente"></param>
+    /// <param name="usuario"></param>
+    /// <param name="familia"></param>
+    /// <param name="esDesasignacionPorUsuario"></param>
+    /// <returns></returns>
     public int VerificarPatenteEscencial(Patente patente, Usuario usuario, Familia familia, bool esDesasignacionPorUsuario)
     {
         var selectCantidadDeAsignacionesAUsuario = String.Format("select * FROM PATENTEUSUARIO inner join usuario on usuario.idUsuario = patenteusuario.Usuario_idUsuario WHERE PATENTEUSUARIO.Patente_idPatente = {0} AND esPermisiva = 1 AND Usuario.habilitado = 1", patente.identificador);

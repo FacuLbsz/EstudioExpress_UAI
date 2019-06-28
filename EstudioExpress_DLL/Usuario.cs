@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-
-
+/// <summary>
+/// Propiedades del objeto Usuario
+/// </summary>
 public class Usuario
 {
 

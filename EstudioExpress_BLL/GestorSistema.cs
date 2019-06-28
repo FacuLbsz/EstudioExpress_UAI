@@ -5,6 +5,9 @@ using System.IO;
 using System.Data;
 using Ionic.Zip;
 
+/// <summary>
+/// Sirve como facade a la capa de presentacion.
+/// </summary>
 public class GestorSistema
 {
 
@@ -26,11 +29,6 @@ public class GestorSistema
 
     private GestorSistema()
     {
-        //if (EstudioExpress_BLL.EstudioExpress.Default.StringDeConexion.Length == 0)
-        //{
-        //   throw new Exception("El string de conexion no se encuentra configurado.");
-        // }
-        //baseDeDatos = BaseDeDatos.ObtenerInstancia(GestorDeEncriptacion.DesencriptarRSA(EstudioExpress_BLL.EstudioExpress.Default.StringDeConexion));
         baseDeDatos = BaseDeDatos.ObtenerInstancia();
     }
 
@@ -44,6 +42,9 @@ public class GestorSistema
         return instancia;
     }
 
+    /// <summary>
+    /// recalcula los DVH
+    /// </summary>
     public void RecalcularDigitosVerificadores()
     {
         var map = new Dictionary<String, Dictionary<String, List<String>>>();
@@ -83,6 +84,12 @@ public class GestorSistema
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento1);
     }
 
+    /// <summary>
+    /// Recalcula los DVH
+    /// </summary>
+    /// <param name="tabla"></param>
+    /// <param name="atributos"></param>
+    /// <param name="identificador"></param>
     private void RecalcularDigitosVerificadores(String tabla, List<String> atributos, String identificador)
     {
         DataTable dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * FROM {0}", tabla));
@@ -121,6 +128,10 @@ public class GestorSistema
         }
     }
 
+    /// <summary>
+    /// Verifica la integridad en la base de datos.
+    /// </summary>
+    /// <returns></returns>
     public int ConsultarIntegridadDeBaseDeDatos()
     {
 
@@ -144,6 +155,12 @@ public class GestorSistema
         return 1;
     }
 
+    /// <summary>
+    /// Se consulta la integridad por una tabla especifica.
+    /// </summary>
+    /// <param name="tabla"></param>
+    /// <param name="atributos"></param>
+    /// <returns></returns>
     private int ConsultaIntegridadDeUnaTabla(String tabla, List<String> atributos)
     {
 
@@ -212,6 +229,11 @@ public class GestorSistema
         return 1;
     }
 
+    /// <summary>
+    /// Se realiza la logica del Login y retornamos un valor por cada caso.
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <returns></returns>
     public int RealizarLogIn(Usuario usuario)
     {
         this.usuarioEnSesion = usuario;
@@ -240,6 +262,11 @@ public class GestorSistema
         return 1;
     }
 
+    /// <summary>
+    /// Metodo usado para modificar la connectionstring 
+    /// </summary>
+    /// <param name="stringDeConexion"></param>
+    /// <returns></returns>
     public static int ModificarStringDeConexion(String stringDeConexion)
     {
 
@@ -261,6 +288,12 @@ public class GestorSistema
         return 1;
     }
 
+    /// <summary>
+    /// Se realiza el backup por un volumen y hacia una ruta especifica.
+    /// </summary>
+    /// <param name="rutaDestino"></param>
+    /// <param name="cantidadVolumenes"></param>
+    /// <returns></returns>
     public int RealizarBackup(String rutaDestino, int cantidadVolumenes)
     {
         try
@@ -303,6 +336,11 @@ public class GestorSistema
         return 1;
     }
 
+    /// <summary>
+    /// se realiza la restauracion de un .bak especifico
+    /// </summary>
+    /// <param name="rutaOrigen"></param>
+    /// <returns></returns>
     public int RealizarRestore(String rutaOrigen)
     {
         try
@@ -351,6 +389,12 @@ public class GestorSistema
         return 1;
     }
 
+    /// <summary>
+    /// Se consulta las patentes por un usuario especifico
+    /// </summary>
+    /// <param name="patente"></param>
+    /// <param name="usuario"></param>
+    /// <returns></returns>
     public bool ConsultarPatentePorUsuario(String patente, int usuario)
     {
         var patenteUsuarios = baseDeDatos.ConsultarBase(String.Format("select esPermisiva from patenteusuario inner join patente on patente.idPatente = patenteusuario.Patente_idPatente inner join usuario on patenteusuario.Usuario_idUsuario = usuario.idUsuario where patenteusuario.Usuario_idUsuario = {0} and patente.nombre = '{1}' and usuario.habilitado = 1", usuario, patente));

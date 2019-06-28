@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+///  Esta clase se usa para arrojar una excepcion cuando 
+///  se encuentran entidades duplicadas.
+/// </summary>
 public class EntidadDuplicadaExcepcion : Exception
 {
-
     public String atributo { get; set; }
 
     public EntidadDuplicadaExcepcion(String atributo)
@@ -14,5 +17,4 @@ public class EntidadDuplicadaExcepcion : Exception
     {
         this.atributo = atributo;
     }
-
 }

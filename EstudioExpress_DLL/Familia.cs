@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-
-
+/// <summary>
+/// Propiedades que representan el objeto Familia.
+/// </summary>
 public class Familia
 {
-
     public int identificador { get; set; }
     //SDC Agregar campo nombre que faltaba
     public String nombre { get; set; }

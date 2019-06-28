@@ -4,6 +4,9 @@ using System.Text;
 using System.IO;
 using System.Data;
 
+/// <summary>
+/// Se maneja toda la logica implicada en la gestion del digito verificador
+/// </summary>
 public class GestorDeDigitoVerificador
 {
 
@@ -28,7 +31,11 @@ public class GestorDeDigitoVerificador
         return instancia;
     }
 
-    //SDC Cambiar digito verificador de int a STRING
+    /// <summary>
+    /// Arma la query que va a agregar o modificar un registro en la 
+    /// tabla digitoverificadorvertical de la bd.
+    /// </summary>
+    /// <param name="tabla"></param>
     public void ModificarDigitoVV(String tabla)
     {
         DataTable dataTable = baseDeDatos.ConsultarBase("SELECT digitoVerificadorH from " + tabla);
@@ -56,7 +63,11 @@ public class GestorDeDigitoVerificador
 
     }
 
-    //SDC Cambiar digito verificador de int a STRING
+    /// <summary>
+    /// Se realiza el calculo y obtencion del DVH
+    /// </summary>
+    /// <param name="argumentos"></param>
+    /// <returns></returns>
     public static String ObtenerDigitoVH(List<String> argumentos)
     {
         String digitoVH = "";

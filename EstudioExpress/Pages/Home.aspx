@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h2>Que deseas aprender hoy?: </h2>
+                    <h2>¿Que deseas aprender hoy?</h2>
                     <input id="tags" placeholder="Selecciona un curso...">
                 </div>
                 <div class="col-md-5"></div>

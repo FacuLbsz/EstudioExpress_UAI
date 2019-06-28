@@ -4,6 +4,9 @@ using System.Text;
 using System.IO;
 using System.Data;
 
+/// <summary>
+/// Logica implicada en el manejo de la bitacora
+/// </summary>
 public class GestorDeBitacora
 {
 
@@ -31,7 +34,14 @@ public class GestorDeBitacora
         return instancia;
     }
 
-    //SDC Cambio tipos de parametros y agrego parametros
+    /// <summary>
+    /// Verifica que el evento de la bitacora no exista
+    /// </summary>
+    /// <param name="criticidad"></param>
+    /// <param name="idUsuario"></param>
+    /// <param name="fechaDesde"></param>
+    /// <param name="fechaHasta"></param>
+    /// <returns></returns>
     public List<EventoBitacora> ConsultarEventos(int? criticidad, int? idUsuario, DateTime? fechaDesde, DateTime? fechaHasta)
     {
         DataTable dataTable = baseDeDatos.ConsultarBase("Select * from Bitacora " + CrearWhere(criticidad, idUsuario, fechaDesde, fechaHasta));
@@ -58,6 +68,15 @@ public class GestorDeBitacora
         return eventosBitacora;
     }
 
+    /// <summary>
+    /// Arma el filtrado de la clausula where implicada en la query que 
+    /// hace la busqueda de la bitacora.
+    /// </summary>
+    /// <param name="criticidad"></param>
+    /// <param name="idUsuario"></param>
+    /// <param name="fechaDesde"></param>
+    /// <param name="fechaHasta"></param>
+    /// <returns></returns>
     private string CrearWhere(int? criticidad, int? idUsuario, DateTime? fechaDesde, DateTime? fechaHasta)
     {
         String where = "";
@@ -92,6 +111,10 @@ public class GestorDeBitacora
 
     }
 
+    /// <summary>
+    /// Genera la query que agrega un nuevo registro a la tabla Bitacora
+    /// </summary>
+    /// <param name="evento"></param>
     public void RegistrarEvento(EventoBitacora evento)
     {
         String insertarEvento = SetFormatDate + " INSERT INTO Bitacora ( criticidad , descripcion , fecha , funcionalidad , Usuario_idUsuario , digitoVerificadorH) VALUES ({0},'{1}','{2}','{3}',{4},'{5}')";

@@ -4,6 +4,9 @@ using System.Text;
 using System.IO;
 using System.Data;
 
+/// <summary>
+/// Logica implicada en el manejo de familias.
+/// </summary>
 public class GestorDeFamilias
 {
 
@@ -31,6 +34,12 @@ public class GestorDeFamilias
         return instancia;
     }
 
+    /// <summary>
+    /// Se crea la query la cual asigna las patentes a los usuarios (Insert).
+    /// </summary>
+    /// <param name="patente"></param>
+    /// <param name="familia"></param>
+    /// <returns></returns>
     public int AsignarPatente(Patente patente, Familia familia)
     {
         var registros = 0;
@@ -42,11 +51,21 @@ public class GestorDeFamilias
         return registros;
     }
 
+    /// <summary>
+    /// Se registra un usuario asociado a una familia.
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <param name="familia"></param>
+    /// <returns>success or fail</returns>
     public int AsignarUsuario(Usuario usuario, Familia familia)
     {
         return baseDeDatos.ModificarBase(String.Format("INSERT INTO familiausuario (Familia_idFamilia ,Usuario_idUsuario) VALUES ({0} ,{1})", familia.identificador.ToString(), usuario.identificador.ToString()));
     }
 
+    /// <summary>
+    /// Se obtiene todas las familias del usuarios.
+    /// </summary>
+    /// <returns>Lista de Familias</returns>
     public List<Familia> ConsultarFamilias()
     {
         DataTable datable = baseDeDatos.ConsultarBase("SELECT * FROM FAMILIA");
@@ -74,6 +93,11 @@ public class GestorDeFamilias
         return familias;
     }
 
+    /// <summary>
+    /// Se crea la query que modifica una familia en la BD
+    /// </summary>
+    /// <param name="familia"></param>
+    /// <returns>success or fail</returns>
     public int ModificarFamilia(Familia familia)
     {
 
@@ -88,6 +112,11 @@ public class GestorDeFamilias
 
     }
 
+    /// <summary>
+    /// Se genera la query que eliminara la familia en la BD
+    /// </summary>
+    /// <param name="familia"></param>
+    /// <returns>Success o Fail</returns>
     public int EliminarFamilia(Familia familia)
     {
         var patentesAsignadas = new List<Patente>();
@@ -127,6 +156,11 @@ public class GestorDeFamilias
         return baseDeDatos.ModificarBase(String.Format("delete familia where idFamilia = {0}", familia.identificador));
     }
 
+    /// <summary>
+    /// Se genera la query que crea una nueva familia en la BD.
+    /// </summary>
+    /// <param name="familia"></param>
+    /// <returns></returns>
     public int CrearFamilia(Familia familia)
     {
         if (baseDeDatos.ConsultarBase(String.Format("SELECT * FROM FAMILIA WHERE nombre = '{0}'", GestorDeEncriptacion.EncriptarAes(familia.nombre))).Rows.Count > 0)
@@ -144,6 +178,12 @@ public class GestorDeFamilias
         return registros;
     }
 
+    /// <summary>
+    /// Se crea la query que desasigna las patentes asociadas a una familia
+    /// </summary>
+    /// <param name="patente"></param>
+    /// <param name="familia"></param>
+    /// <returns></returns>
     public int DesasignarPatente(Patente patente, Familia familia)
     {
         var registros = baseDeDatos.ModificarBase(String.Format("DELETE FROM familiapatente WHERE Patente_idPatente = {0} AND Familia_idFamilia = {1}", patente.identificador, familia.identificador));
@@ -151,6 +191,12 @@ public class GestorDeFamilias
         return registros;
     }
 
+    /// <summary>
+    /// Se crea la query que elimina un usuario asociado a una familia.
+    /// </summary>
+    /// <param name="usuario"></param>
+    /// <param name="familia"></param>
+    /// <returns></returns>
     public int DesasignarUsuario(Usuario usuario, Familia familia)
     {
         var patentesDelUsuario = GestorDePatentes.ObtenerInstancia().ObtenerPatentesParaUnUsuarioPorFamilia(usuario);
