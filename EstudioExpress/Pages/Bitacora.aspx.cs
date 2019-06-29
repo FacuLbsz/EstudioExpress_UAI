@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,19 +27,21 @@ namespace EstudioExpress.Pages
                 {
                     desdeCalendar.Visible = false;
                     hastaCalendar.Visible = false;
+                    
+                    List<Usuario> usuarios = new List<Usuario>();
+                    usuarios.Add(new Usuario { nombreUsuario = "TODOS", identificador = 0 });
+                    usuarios.AddRange(obtenerUsuarios());
+
+                    usuarioDropDownList.DataSource = usuarios;
+                    usuarioDropDownList.DataValueField = "identificador";
+                    usuarioDropDownList.DataTextField = "nombreUsuario";
+                    usuarioDropDownList.DataBind();
+
+                    criticidadDropDownList.DataSource = new List<String> { "TODOS", "Alta", "Media", "Baja" };
+                    criticidadDropDownList.DataBind();
                 }
 
-                List<Usuario> usuarios = new List<Usuario>();
-                usuarios.Add(new Usuario { nombreUsuario = "TODOS", identificador = 0 });
-                usuarios.AddRange(obtenerUsuarios());
 
-                usuarioDropDownList.DataSource = usuarios;
-                usuarioDropDownList.DataValueField = "identificador";
-                usuarioDropDownList.DataTextField = "nombreUsuario";
-                usuarioDropDownList.DataBind();
-
-                criticidadDropDownList.DataSource = new List<String> { "TODOS", "Alta", "Media", "Baja" };
-                criticidadDropDownList.DataBind();
 
             }
 
@@ -61,13 +64,13 @@ namespace EstudioExpress.Pages
 
         protected void desdeCalendar_SelectionChanged(object sender, EventArgs e)
         {
-            desdeTextBox.Text = desdeCalendar.SelectedDate.ToLongDateString();
+            desdeTextBox.Text = desdeCalendar.SelectedDate.ToShortDateString();
             desdeCalendar.Visible = false;
         }
 
         protected void hastaCalendar_SelectionChanged(object sender, EventArgs e)
         {
-            hastaTextBox.Text = hastaCalendar.SelectedDate.ToLongDateString();
+            hastaTextBox.Text = hastaCalendar.SelectedDate.ToShortDateString();
             hastaCalendar.Visible = false;
         }
 
@@ -84,6 +87,10 @@ namespace EstudioExpress.Pages
                     Response.Write("<script>alert('La fecha desde no puede ser superior a la fecha hasta');</script>");
                     return;
                 }
+
+                //DateTime dt = DateTime.ParseExact(yourObject.ToString(), "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+
+                //string s = dt.ToString("dd/M/yyyy", CultureInfo.InvariantCulture);
                 fechaDesde = desdeCalendar.SelectedDate;
                 fechaHasta = hastaCalendar.SelectedDate;
             }
