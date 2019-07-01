@@ -275,3 +275,24 @@ div.accountInfo {
     padding-top: 16px;
     /* padding-bottom: 16px; */
 }
+
+
+.credit-card-div span {
+    padding-top: 10px;
+    text-align: left;
+}
+
+.credit-card-div img {
+    width: 65px;
+    height: 65px;
+    margin-left: 0px;
+    margin-top: 6px;
+}
+
+.credit-card-div .small-font {
+    /*font-size: 9px;*/
+}
+
+.credit-card-div .pad-adjust {
+    padding-top: 10px;
+}

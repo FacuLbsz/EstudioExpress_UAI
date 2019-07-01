@@ -138,8 +138,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Images\homeBackground.jpg" />
+	<Content Include="Images\About2.jpg" />    <Content Include="Images\homeBackground.jpg" />
     <Content Include="Images\homePage.jpg" />
+	<Content Include="Pages\About.aspx" />
     <Content Include="Pages\AdministracionDeCursos.aspx" />
     <Content Include="Pages\Bitacora.aspx" />
     <Content Include="Pages\Curso.aspx" />
@@ -188,10 +189,18 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CustomIdentity.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MessageBox.cs" />
+	<Compile Include="Pages\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdministracionDeCursos.aspx.cs">
       <DependentUpon>AdministracionDeCursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

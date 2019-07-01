@@ -13,5 +13,15 @@ namespace EstudioExpress.Pages
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["IdCursoAComprar"] = "16";
+            Session["NombreCursoAComprar"] = "casoprueba";
+
+            Response.Redirect("Pago.aspx");
+
+
+        }
     }
 }

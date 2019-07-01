@@ -12,13 +12,13 @@ public class GestorDeFacturacion
 
 
     private String sqlCrearFacturaConDetalle =
-    "begin tran"
+    "begin tran;"
     + "DECLARE @AuxTable TABLE (id INT);"
     + "DECLARE @id int;"
-    + "INSERT INTO FACTURA (fecha ,idUsuario) OUTPUT INSERTED.idFactura INTO @AuxTable(id) VALUES ('%fecha%' ,%idUsuario%);"
-    + "SET @id = (select id from AuxTable);"
+    + "INSERT INTO FACTURA (fecha ,idUsuario) OUTPUT INSERTED.idFactura INTO @AuxTable(id) VALUES (GETDATE() ,%idUsuario%);"
+    + "SET @id = (select id from @AuxTable);"
     + "%detalles%"
-    + "commit tran";
+    + "commit tran;";
 
     private String sqlCrearDetalleFactura = "INSERT INTO DETALLEFACTURA (descripcion, monto, idFactura) VALUES ('%descripcion%', %monto%, @id);";
 
@@ -46,7 +46,7 @@ public class GestorDeFacturacion
             detalle = sqlCrearDetalleFactura.Replace("%descripcion%", detalleFactura.descripcion + "").Replace("%monto%", detalleFactura.monto + "");
         }
         //'%fecha%' ,%idUsuario%
-        var registros = baseDeDatos.ModificarBase(sqlCrearFacturaConDetalle.Replace("%fecha%", factura.fecha.ToString())
+        var registros = baseDeDatos.ModificarBase(sqlCrearFacturaConDetalle
             .Replace("%idUsuario%", factura.usuario.identificador + "")
             .Replace("%detalles%", detalle));
 

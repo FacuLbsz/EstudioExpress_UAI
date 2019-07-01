@@ -14,11 +14,14 @@ namespace EstudioExpress
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            if (IsPostBack)
             {
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
 
-                Response.Redirect("Home.aspx");
+                    Response.Redirect("Home.aspx");
 
+                }
             }
         }
 
@@ -51,7 +54,7 @@ namespace EstudioExpress
                             }
                         });
 
-                        var cookie = new HttpCookie("EstudioExpress_Usuario", GestorDeEncriptacion.EncriptarAes(UsuarioTextBox.Text + "|" + patentes));
+                        var cookie = new HttpCookie("EstudioExpress_Usuario", GestorDeEncriptacion.EncriptarAes(usuario.identificador + "|" + UsuarioTextBox.Text + "|" + patentes));
 
                         Response.Cookies.Add(cookie);
                         Response.Redirect("Home.aspx");

@@ -8,14 +8,14 @@ public class GestorDeCursos
     private static GestorDeCursos instancia;
     private BaseDeDatos baseDeDatos;
 
-    private String sqlCrearCursoConEpisodios = 
-    "begin tran"
+    private String sqlCrearCursoConEpisodios =
+    "begin tran;"
     + "DECLARE @AuxTable TABLE (id INT);"
     + "DECLARE @id int;"
     + "INSERT INTO CURSO (nombre ,duracion ,descripcion ,precio) OUTPUT INSERTED.idCurso INTO @AuxTable(id) VALUES ('%nombre%' ,%duracion% ,'%descripcion%' ,%precio%);"
-    + "SET @id = (select id from AuxTable);"
+    + "SET @id = (select id from @AuxTable);"
     + "%episodios%"
-    + "commit tran";
+    + "commit tran;";
 
     private String sqlCrearEpisodio = "INSERT INTO EPISODIO (numeroEpisodio, direccionVideo, descripcion, idCurso) VALUES (%numeroEpisodio%, '%direccionVideo%', '%descripcion%', @id);";
 
@@ -35,7 +35,7 @@ public class GestorDeCursos
         return instancia;
     }
 
-    public int CrearCurso(Curso curso, int usuarioEnSesion)
+    public int CrearCurso(CursoEntidad curso, int usuarioEnSesion)
     {
 
         if (baseDeDatos.ConsultarBase(String.Format("SELECT * FROM CURSO WHERE nombre = '{0}'", curso.nombre)).Rows.Count > 0)
@@ -56,21 +56,35 @@ public class GestorDeCursos
             .Replace("%descripcion%", curso.descripcion)
             .Replace("%precio%", curso.precio + ""));
 
-        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se crea el curso" + curso.nombre, criticidad = 3, funcionalidad = "ADMINISTRACION DE CURSOS", usuario = new Usuario() {identificador = usuarioEnSesion } };
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se crea el curso" + curso.nombre, criticidad = 3, funcionalidad = "ADMINISTRACION DE CURSOS", usuario = new Usuario() { identificador = usuarioEnSesion } };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
 
 
         return registros;
     }
 
-    public List<Curso> ObtenerCursos()
+
+    public CursoEntidad ObtenerCurso(int identificador)
+    {
+        var dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * FROM CURSO where idCurso = {0}", identificador));
+        CursoEntidad curso = new CursoEntidad();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            curso = CursoRow(row);
+
+            curso.Episodios = ObtenerEpisodiosDeUnCurso(curso.identificador);
+        }
+        return curso;
+    }
+
+    public List<CursoEntidad> ObtenerCursos()
     {
         var dataTable = baseDeDatos.ConsultarBase("SELECT * FROM CURSO");
-        List<Curso> cursos = new List<Curso>();
+        List<CursoEntidad> cursos = new List<CursoEntidad>();
         foreach (DataRow row in dataTable.Rows)
         {
-            Curso curso = CursoRow(row);
-            
+            CursoEntidad curso = CursoRow(row);
+
             curso.Episodios = ObtenerEpisodiosDeUnCurso(curso.identificador);
             cursos.Add(curso);
 
@@ -78,24 +92,24 @@ public class GestorDeCursos
         return cursos;
     }
 
-    public int AsignarCursoAUsuario(Curso curso, Usuario usuario)
+    public int AsignarCursoAUsuario(CursoEntidad curso, Usuario usuario)
     {
-        var registros = baseDeDatos.ModificarBase(String.Format("INSERT INTO USUARIOCURSO (curso_idCurso, usuario_idUsuario) VALUES ({0}, {1})",curso.identificador,usuario.identificador));
+        var registros = baseDeDatos.ModificarBase(String.Format("INSERT INTO USUARIOCURSO (curso_idCurso, usuario_idUsuario) VALUES ({0}, {1})", curso.identificador, usuario.identificador));
 
 
-        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se asigno el " + curso.nombre + " al usuario" +usuario.identificador , criticidad = 3, funcionalidad = "ADMINISTRACION DE CURSOS", usuario = usuario };
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se asigno el " + curso.nombre + " al usuario" + usuario.identificador, criticidad = 3, funcionalidad = "ADMINISTRACION DE CURSOS", usuario = usuario };
         GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
 
         return registros;
     }
-    
-    public List<Curso> ObtenerCursosDeUnUsuario(int usuario)
+
+    public List<CursoEntidad> ObtenerCursosDeUnUsuario(int usuario)
     {
         var dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * from curso inner join usuariocurso on usuariocurso.curso_idCurso = curso.idCurso where usuariocurso.Usuario_idUsuario = {0}", usuario));
-        List<Curso> cursos = new List<Curso>();
+        List<CursoEntidad> cursos = new List<CursoEntidad>();
         foreach (DataRow row in dataTable.Rows)
         {
-            Curso curso = CursoRow(row);
+            CursoEntidad curso = CursoRow(row);
 
             curso.Episodios = ObtenerEpisodiosDeUnCurso(curso.identificador);
             cursos.Add(curso);
@@ -104,9 +118,18 @@ public class GestorDeCursos
         return cursos;
     }
 
-    public Curso CursoRow(DataRow row)
+    public bool EsUnCursoAsignadoAlUsuario(int curso, int usuario)
     {
-        Curso curso =new Curso();
+
+        var dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * from curso inner join usuariocurso on usuariocurso.curso_idCurso = curso.idCurso where usuariocurso.Usuario_idUsuario = {0} and curso.idCurso = {1}", usuario, curso));
+
+        return dataTable.Rows.Count > 0;
+
+    }
+
+    public CursoEntidad CursoRow(DataRow row)
+    {
+        CursoEntidad curso = new CursoEntidad();
 
         curso.nombre = Convert.ToString(row["nombre"]);
         curso.identificador = Convert.ToInt32(row["idCurso"]);

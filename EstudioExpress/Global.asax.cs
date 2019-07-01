@@ -32,10 +32,11 @@ namespace EstudioExpress
                 
                 String[] usuarioYRoles = GestorDeEncriptacion.DesencriptarAes(Request.Cookies["EstudioExpress_Usuario"].Value).Split('|');
 
-                var nombreUsuario = usuarioYRoles[0];
-                String[] roles = usuarioYRoles[1].Split(',');
+                var identificador = usuarioYRoles[0];
+                var nombreUsuario = usuarioYRoles[1];
+                String[] roles = usuarioYRoles[2].Split(',');
 
-                GenericIdentity myIdentity = new GenericIdentity(nombreUsuario);
+                CustomIdentity myIdentity = new CustomIdentity(nombreUsuario, Int32.Parse(identificador));
                 GenericPrincipal myPrincipal = new GenericPrincipal(myIdentity, roles);
 
                 HttpContext.Current.User = myPrincipal;

@@ -20,7 +20,7 @@ public class Usuario
     public int cantidadDeIntentos { get; set; }
     public List<PatenteUsuario> PatentesAsignadas { get; set; }
     public Familia Familia { get; set; }
-    public List<Curso> Cursos { get; set; }
+    public List<CursoEntidad> Cursos { get; set; }
 
     public Usuario()
     {

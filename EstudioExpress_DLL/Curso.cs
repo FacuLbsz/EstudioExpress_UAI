@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Curso
+public class CursoEntidad
+
 {
     public int identificador { get; set; }
     public String nombre { get; set; }
