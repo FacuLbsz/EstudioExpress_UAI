@@ -12,6 +12,6 @@ public class CursoEntidad
     public int duracion { get; set; }
     public String descripcion { get; set; }
     public Decimal precio { get; set; }
-    public List<Episodio> Episodios { get; set; }
+    public List<Episodio> Episodios = new List<Episodio>();
     
 }

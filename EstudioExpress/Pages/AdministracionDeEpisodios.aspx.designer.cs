@@ -10,7 +10,34 @@
 namespace EstudioExpress.Pages {
     
     
-    public partial class AdministracionDeCursos {
+    public partial class AdministracionDeEpisodios {
+        
+        /// <summary>
+        /// Control TituloLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TituloLabel;
+        
+        /// <summary>
+        /// Control CursoIdentificador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CursoIdentificador;
+        
+        /// <summary>
+        /// Control CursoNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CursoNombre;
         
         /// <summary>
         /// Control AgregarNombre.
@@ -49,13 +76,13 @@ namespace EstudioExpress.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
         
         /// <summary>
-        /// Control AgregarPrecio.
+        /// Control AgregarVideo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AgregarPrecio;
+        protected global::System.Web.UI.WebControls.TextBox AgregarVideo;
         
         /// <summary>
         /// Control RequiredFieldValidator2.
@@ -67,13 +94,31 @@ namespace EstudioExpress.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// Control AgregarCursoButton.
+        /// Control AgregarNumeroEpisodio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AgregarCursoButton;
+        protected global::System.Web.UI.WebControls.TextBox AgregarNumeroEpisodio;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
+        /// Control AgregarEpisodioButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AgregarEpisodioButton;
         
         /// <summary>
         /// Control LabelStatus.
@@ -85,12 +130,12 @@ namespace EstudioExpress.Pages {
         protected global::System.Web.UI.WebControls.Label LabelStatus;
         
         /// <summary>
-        /// Control CursoList.
+        /// Control EpisodioList.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CursoList;
+        protected global::System.Web.UI.WebControls.ListView EpisodioList;
     }
 }

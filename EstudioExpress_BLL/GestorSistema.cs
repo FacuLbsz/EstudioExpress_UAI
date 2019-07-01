@@ -55,13 +55,6 @@ public class GestorSistema
         map.Add("FAMILIAPATENTE",
             new Dictionary<String, List<String>>()
             {{"idFamiliaPatente" , new List<String>() { "Patente_idPatente", "Familia_idFamilia" } } });
-        map.Add("BENEFICIO",
-            new Dictionary<String, List<String>>()
-            {{"idBeneficio" , new List<String>() { "nombre", "puntaje" } } });
-        //SDC Modificar campos que contendran DVH en la tabla EVALUACION
-        map.Add("EVALUACION",
-            new Dictionary<String, List<String>>()
-            {{"idEvaluacion" , new List<String>() { "puntaje", "periodo" } } });
 
         foreach (String tabla in map.Keys)
         {
@@ -134,10 +127,6 @@ public class GestorSistema
         map.Add("USUARIO", new List<String>() { "nombreUsuario", "nombre", "apellido", "contrasena" });
         map.Add("PATENTEUSUARIO", new List<String>() { "esPermisiva", "Patente_idPatente", "Usuario_idUsuario" });
         map.Add("FAMILIAPATENTE", new List<String>() { "Patente_idPatente", "Familia_idFamilia" });
-        map.Add("BENEFICIO", new List<String>() { "nombre", "puntaje" });
-        //SDC Modificar campos que contendran DVH en la tabla EVALUACION
-        map.Add("EVALUACION", new List<String>() { "puntaje", "periodo" });
-
 
         foreach (String tabla in map.Keys)
         {
@@ -296,7 +285,7 @@ public class GestorSistema
                 var backupPath = baseDeDatos.ObtenerBackup();
                 var ruta = backupPath;
                 var multiplesVolumenes = cantidadVolumenes > 1;
-                var rutaDestinoTemp = rutaDestino + "\\Benefix-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".zip";
+                var rutaDestinoTemp = rutaDestino + "\\EstudioExpress-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".zip";
 
                 zip.AddFile(ruta, "");
                 zip.TempFileFolder = Path.GetTempPath();

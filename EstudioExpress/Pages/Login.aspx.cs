@@ -38,7 +38,7 @@ namespace EstudioExpress
 
                     case 1:
 
-                        var patentesPorFamilia = GestorDePatentes.ObtenerInstancia().ObtenerPatentesParaUnUsuarioPorFamilia(usuario);
+                        List<PatenteUsuario> patentesPorFamilia = GestorDePatentes.ObtenerInstancia().ObtenerPatentesParaUnUsuarioPorFamilia(usuario);
 
                         String patentes = "";
                         patentesPorFamilia.ForEach(p =>
@@ -55,6 +55,24 @@ namespace EstudioExpress
                         });
 
                         var cookie = new HttpCookie("EstudioExpress_Usuario", GestorDeEncriptacion.EncriptarAes(usuario.identificador + "|" + UsuarioTextBox.Text + "|" + patentes));
+
+                        
+
+                        if (GestorSistema.ObtenerInstancia().ConsultarIntegridadDeBaseDeDatos() == 0)
+                        {
+                            if (patentesPorFamilia.Exists(x => x.patente.nombre == "BITACORA"))
+                            {
+
+                                Response.Cookies.Add(cookie);
+                                MessageBox.ShowAndRedirect(this, "Se ha vulnerado la integridad de la base de datos, desea recuperarla?", "RecuperarIntegridad.aspx");
+                                return;
+                            }
+                            else
+                            {
+                                MessageBox.ShowAndRedirect(this, "Se ha vulnerado la integridad de la base de datos por favor comuniquese con el administrador de sistema.", "Login.aspx");
+                                return;
+                            }
+                        }
 
                         Response.Cookies.Add(cookie);
                         Response.Redirect("Home.aspx");

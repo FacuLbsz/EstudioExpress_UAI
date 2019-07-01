@@ -19,7 +19,7 @@ namespace EstudioExpress.Pages
                     Response.Redirect("Login.aspx");
                 }
 
-                var cursoAComprar = Session["IdCursoAComprar"].ToString();
+                String cursoAComprar = Session["IdCursoAComprar"] != null ? "" : Session["IdCursoAComprar"].ToString();
                 Session["IdCursoAComprar"] = "";
 
                 var nombreCursoAComprar = Session["NombreCursoAComprar"].ToString();

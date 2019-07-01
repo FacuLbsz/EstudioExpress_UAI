@@ -138,10 +138,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-	<Content Include="Images\About2.jpg" />    <Content Include="Images\homeBackground.jpg" />
+    <Content Include="Images\About2.jpg" />
+    <Content Include="Images\homeBackground.jpg" />
     <Content Include="Images\homePage.jpg" />
-	<Content Include="Pages\About.aspx" />
+    <Content Include="Pages\About.aspx" />
     <Content Include="Pages\AdministracionDeCursos.aspx" />
+    <Content Include="Pages\AdministracionDeEpisodios.aspx" />
+    <Content Include="Pages\Backup.aspx" />
     <Content Include="Pages\Bitacora.aspx" />
     <Content Include="Pages\Curso.aspx" />
     <Content Include="Pages\Cursos.aspx" />
@@ -150,6 +153,8 @@
     <Content Include="Pages\Logout.aspx" />
     <Content Include="Pages\MisCursos.aspx" />
     <Content Include="Pages\Pago.aspx" />
+    <Content Include="Pages\RecuperarIntegridad.aspx" />
+    <Content Include="Pages\Restore.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -194,7 +199,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MessageBox.cs" />
-	<Compile Include="Pages\About.aspx.cs">
+    <Compile Include="Pages\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -207,6 +212,20 @@
     </Compile>
     <Compile Include="Pages\AdministracionDeCursos.aspx.designer.cs">
       <DependentUpon>AdministracionDeCursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdministracionDeEpisodios.aspx.cs">
+      <DependentUpon>AdministracionDeEpisodios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdministracionDeEpisodios.aspx.designer.cs">
+      <DependentUpon>AdministracionDeEpisodios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Backup.aspx.cs">
+      <DependentUpon>Backup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Backup.aspx.designer.cs">
+      <DependentUpon>Backup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Bitacora.aspx.cs">
       <DependentUpon>Bitacora.aspx</DependentUpon>
@@ -263,6 +282,20 @@
     </Compile>
     <Compile Include="Pages\Pago.aspx.designer.cs">
       <DependentUpon>Pago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecuperarIntegridad.aspx.cs">
+      <DependentUpon>RecuperarIntegridad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecuperarIntegridad.aspx.designer.cs">
+      <DependentUpon>RecuperarIntegridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Restore.aspx.cs">
+      <DependentUpon>Restore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Restore.aspx.designer.cs">
+      <DependentUpon>Restore.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

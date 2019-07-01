@@ -15,6 +15,8 @@ namespace EstudioExpress
         {
             menuItems.Add(newMenuItem("TODOS-HOME", "~/Pages/Home.aspx", "Página principal"));
             menuItems.Add(newMenuItem("WEBMASTER-BITACORA", "~/Pages/Bitacora.aspx", "Bitacora"));
+            menuItems.Add(newMenuItem("WEBMASTER-BACKUP", "~/Pages/Backup.aspx", "Backup"));
+            menuItems.Add(newMenuItem("WEBMASTER-RESTORE", "~/Pages/Restore.aspx", "Restore"));
             menuItems.Add(newMenuItem("TUTOR-ADMINISRAR_CURSOS", "~/Pages/AdministracionDeCursos.aspx", "Administrar Cursos"));
             menuItems.Add(newMenuItem("CLIENTE-CONSULTAR_CURSOS", "~/Pages/Cursos.aspx", "Consultar Cursos"));
             menuItems.Add(newMenuItem("CLIENTE-MIS_CURSOS", "~/Pages/MisCursos.aspx", "Mis Cursos"));

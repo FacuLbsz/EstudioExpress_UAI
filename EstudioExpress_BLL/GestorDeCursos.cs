@@ -35,6 +35,24 @@ public class GestorDeCursos
         return instancia;
     }
 
+    public int AgregarEpisodioACurso(Episodio episodio, CursoEntidad curso, int usuarioEnSesion)
+    {
+        var registros = baseDeDatos.ModificarBase(String.Format("INSERT INTO EPISODIO (numeroEpisodio, direccionVideo, descripcion, idCurso) VALUES ({0}, '{1}', '{2}', {3});", episodio.numeroEpisodio, episodio.direccionVideo, episodio.descripcion, curso.identificador)            );
+
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se crea el episodio" + episodio.nombre, criticidad = 3, funcionalidad = "ADMINISTRACION DE CURSOS", usuario = new Usuario() { identificador = usuarioEnSesion } };
+        GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
+
+        return registros;
+    }
+
+    public void QuitarEpisodioACurso(Episodio episodio, CursoEntidad cursoEntidad, int usuarioEnSesion)
+    {
+        var registros = baseDeDatos.ModificarBase(String.Format("DELETE FROM EPISODIO where idEpisodio = {0}",episodio.identificador));
+
+        EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Se elimina el episodio" + episodio.identificador, criticidad = 3, funcionalidad = "ADMINISTRACION DE CURSOS", usuario = new Usuario() { identificador = usuarioEnSesion } };
+        GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento);
+    }
+
     public int CrearCurso(CursoEntidad curso, int usuarioEnSesion)
     {
 
@@ -146,6 +164,7 @@ public class GestorDeCursos
         foreach (DataRow row in dataTable.Rows)
         {
             Episodio episodio = new Episodio();
+            episodio.identificador = Convert.ToInt32(row["idCursoEpisodio"]);
             episodio.nombre = Convert.ToString(row["nombre"]);
             episodio.descripcion = Convert.ToString(row["descripcion"]);
             episodio.direccionVideo = Convert.ToString(row["direccionVideo"]);

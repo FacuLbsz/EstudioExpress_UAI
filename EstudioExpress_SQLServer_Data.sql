@@ -34,6 +34,8 @@ INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (1, N'BITACORA')
 INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (2, N'ADMINISRAR_CURSOS')
 INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (3, N'CONSULTAR_CURSOS')
 INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (4, N'MIS_CURSOS')
+INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (5, N'BACKUP')
+INSERT [dbo].[patente] ([idPatente], [nombre]) VALUES (6, N'RESTORE')
 SET IDENTITY_INSERT [dbo].[patente] OFF
 
 SET IDENTITY_INSERT [dbo].[familiapatente] ON 

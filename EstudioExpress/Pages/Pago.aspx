@@ -13,7 +13,7 @@
                             <asp:TextBox ID="TextBox1" runat="server"  class="form-control" placeholder="Ingrese el número de la Tarjeta"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="row ">
+                    <div class="row">
                         <div class="col-md-3 col-sm-3 col-xs-3">
                             <span class="help-block text-muted small-font">Mes de expiración</span>
                             <asp:TextBox ID="MMTextBox" runat="server"  class="form-control" placeholder="MM"></asp:TextBox>
