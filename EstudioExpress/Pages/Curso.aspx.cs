@@ -26,7 +26,10 @@ namespace EstudioExpress.Pages
                 listaDeEpisodios.DataSource = curso.Episodios;
                 listaDeEpisodios.DataBind();
                 lblDescripcionCurso.Text = curso.descripcion;
+                PrecioCursoLabel.Text = "$"+curso.precio;
                 Session["IdCursoAComprar"] = curso.identificador.ToString();
+                LabelIdCurso.Text = curso.identificador.ToString();
+                LabelIdCurso.Visible = false;
                 Session["NombreCursoAComprar"] = curso.nombre;
                 var idUsuario = ((EstudioExpress.CustomIdentity)HttpContext.Current?.User?.Identity).identificador;
                 var usuarioCurso = GestorDeCursos.ObtenerInstancia().EsUnCursoAsignadoAlUsuario(curso.identificador, idUsuario);
@@ -58,8 +61,11 @@ namespace EstudioExpress.Pages
         {
             if (e.CommandName == "CursoVerVideo")
             {
-                var video = (e.CommandArgument.ToString());
-                Helpers.MessageBox.Redirect(Response, video, "menubar=0,scrollbars=1,width=780,height=900,top=10", "");
+                
+                var idVideo = (e.CommandArgument.ToString());
+                Session["IdCursoAVer"] = LabelIdCurso.Text;
+                Session["IdEpisodioAVer"] = idVideo;
+                Response.Redirect("Video.aspx");
             }
         }
 
