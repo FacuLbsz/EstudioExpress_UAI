@@ -32,7 +32,7 @@
                     <asp:TextBox ID="ContraseñaTextBox" style="left: 41px; position: relative;" class="form-control" TextMode="Password" runat="server" placeholder="Contraseña *"></asp:TextBox>                   
                 </div>
                 <div class="form-group">        
-                    <asp:Button ID="Button1" class="btnSubmit" Text="Login" runat="server" OnClick="Button1_Click"/>
+                    <asp:Button ID="Button1" class="myButton" Text="Login" runat="server" OnClick="Button1_Click"/>
                 </div>               
             </div>
             <div class="col-md-4">

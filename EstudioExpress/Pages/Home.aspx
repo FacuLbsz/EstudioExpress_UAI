@@ -37,7 +37,8 @@
             <div class="row">
                 <div class="col-md-5">
                     <h2>¿Que deseas aprender hoy?</h2>
-                    <input id="tags" placeholder="Selecciona un curso...">
+                    <%--<input id="tags" placeholder="Selecciona un curso...">--%>
+                    <p style="color: white; font-size:medium; font-weight: bold">Más de mil cursos online sobre informática. Aprende sobre lo ultimo en tecnología...</p>
                 </div>
                 <div class="col-md-5"></div>
                 <div class="col-md-2">
