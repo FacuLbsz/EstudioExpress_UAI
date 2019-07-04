@@ -20,7 +20,7 @@ public class GestorSistema
     //SDC Relacion con gestor de digito verificador GestorDeDigitoVerificador
 
     private BaseDeDatos baseDeDatos;
-    
+
     private GestorSistema()
     {
         baseDeDatos = BaseDeDatos.ObtenerInstancia();
@@ -236,7 +236,7 @@ public class GestorSistema
         {
             GestorDeUsuarios.ObtenerInstancia().DesbloquearUsuario(usuarioLogin);
         }
-        
+
         usuario.identificador = usuarioLogin.identificador;
 
         EventoBitacora evento = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Login", criticidad = 3, funcionalidad = "LOGIN", usuario = new Usuario() { identificador = usuarioLogin.identificador } };
@@ -323,31 +323,19 @@ public class GestorSistema
     /// </summary>
     /// <param name="rutaOrigen"></param>
     /// <returns></returns>
-    public int RealizarRestore(String rutaOrigen, int usuarioEnSesion)
+    public int RealizarRestore(string rutaOrigen, int usuarioEnSesion, string nombreArchivo)
     {
         try
         {
-            DataTable rutaBackupDataTable = baseDeDatos.ConsultarBase("EXEC xp_instance_regread  N'HKEY_LOCAL_MACHINE', N'Software\\Microsoft\\MSSQLServer\\MSSQLServer',N'BackupDirectory'");
-            var rutaBackup = "";
-            foreach (DataRow row in rutaBackupDataTable.Rows)
-            {
-                rutaBackup = row["Data"].ToString();
-            }
-
             using (ZipFile zipFile = new ZipFile(rutaOrigen))
             {
-                rutaBackup = rutaBackup + "\\Backup-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                zipFile.ExtractAll(rutaBackup);
-
-                string[] zipFiles = Directory.GetFiles(rutaBackup, "*.zip*", SearchOption.AllDirectories);
-
-                if (zipFiles.Length > 0)
+                var pathToGetFile = rutaOrigen.Replace("\\" + nombreArchivo, string.Empty);
+                if (!File.Exists(rutaOrigen))
                 {
-                    var zipFile2 = new ZipFile(zipFiles[0]);
-                    zipFile2.ExtractAll(rutaBackup);
+                    zipFile.ExtractAll(pathToGetFile);
                 }
 
-                string[] backFiles = Directory.GetFiles(rutaBackup, "*.bak*", SearchOption.AllDirectories);
+                string[] backFiles = Directory.GetFiles(pathToGetFile, "*.bak*", SearchOption.AllDirectories);
 
                 if (backFiles.Length == 1)
                 {

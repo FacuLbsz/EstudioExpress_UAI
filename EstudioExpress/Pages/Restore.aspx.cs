@@ -1,10 +1,8 @@
 ﻿using EstudioExpress.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace EstudioExpress.Pages
 {
@@ -19,25 +17,38 @@ namespace EstudioExpress.Pages
                     Response.Redirect("Login.aspx");
                 }
 
+                lblPath.Visible = false;
             }
         }
 
         protected void RestoreButton_Click(object sender, EventArgs e)
         {
-            var rutaDestino = RutaOrigenTextBox.Text;
-            if (rutaDestino == "")
+            if (string.IsNullOrEmpty(fuBackUpPath.PostedFile.FileName))
             {
-                MessageBox.Show(this, "Debe indicar una ruta origen");
+                MessageBox.Show(this, "Debe indicar una ruta origen válida.");
+                return;
+            }
+ 
+            string ext = Path.GetExtension(fuBackUpPath.PostedFile.FileName);
+            if (ext.ToLower() != ".zip")
+            {
+                lblPath.Text = "Desafortunadamente, el formato seleccionado no es correcto. Solo se admiten archivos .Zip.";
+                lblPath.Visible = true;
                 return;
             }
 
+            lblPath.Visible = false;
+            var rutaDestino = fuBackUpPath.PostedFile.FileName;
+
+            var rutaDeArchivo = Server.MapPath("~/") + rutaDestino;
+            fuBackUpPath.SaveAs(rutaDeArchivo);
+
             CustomIdentity userIdentity = (CustomIdentity)HttpContext.Current.User.Identity;
 
-            if (GestorSistema.ObtenerInstancia().RealizarRestore(rutaDestino, userIdentity.identificador) == 1)
+            if (GestorSistema.ObtenerInstancia().RealizarRestore(rutaDeArchivo, userIdentity.identificador, rutaDestino) == 1)
             {
 
                 MessageBox.Show(this, "La restauracion se realizo correctamente");
-
             }
             else
             {
@@ -45,6 +56,6 @@ namespace EstudioExpress.Pages
             }
 
 
-        }        
+        }
     }
 }

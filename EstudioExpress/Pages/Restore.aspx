@@ -7,8 +7,13 @@
                 <div class="panel-heading">
                     <div class="row ">
                         <div class="col-md-12 pad-adjust">
-                            <span class="help-block text-muted ">Ruta donde se obtendra el backup</span>
-                            <asp:TextBox ID="RutaOrigenTextBox" runat="server" class="form-control" placeholder="Ruta origen"></asp:TextBox>
+                            <span class="help-block text-muted">Ruta donde se obtendra el backup
+                                <br />
+                                <br />
+                                <asp:FileUpload ID="fuBackUpPath" accept=".Zip" runat="server" />
+                            <asp:Label ID="lblPath" runat="server"></asp:Label>
+                            </span>
+                            &nbsp;<%--<asp:TextBox ID="RutaOrigenTextBox" runat="server" class="form-control" placeholder="Ruta origen"></asp:TextBox>--%>
                         </div>
                     </div>
                     <div class="row ">                        
