@@ -8,14 +8,14 @@
             <div class="form-group">
 
                 <span class="help-block text-muted small-font">Nombre:</span>
-                <asp:TextBox ID="AgregarNombre" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AgregarNombre" class="form-control" runat="server" MaxLength="20"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="* nombre requerido." ControlToValidate="AgregarNombre" SetFocusOnError="true" Display="Dynamic"></asp:RequiredFieldValidator>
 
             </div>
             <div class="form-group">
 
                 <span class="help-block text-muted small-font">Descripcion:</span>
-                <asp:TextBox ID="AgregarDescripcion" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AgregarDescripcion" class="form-control" runat="server" MaxLength="200"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="* descripcion requerida." ControlToValidate="AgregarDescripcion" SetFocusOnError="true" Display="Dynamic"></asp:RequiredFieldValidator>
 
 
@@ -23,7 +23,7 @@
             <div class="form-group">
 
                 <span class="help-block text-muted small-font">Precio:</span>
-                <asp:TextBox ID="AgregarPrecio" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AgregarPrecio" class="form-control" runat="server" MaxLength="3" TextMode="Number"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Text="* precio requerido." ControlToValidate="AgregarPrecio" SetFocusOnError="true" Display="Dynamic"></asp:RequiredFieldValidator>
 
             </div>

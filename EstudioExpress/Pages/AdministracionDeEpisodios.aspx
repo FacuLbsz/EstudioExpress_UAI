@@ -10,7 +10,7 @@
             <div class="form-group">
 
                 <span class="help-block text-muted small-font">Nombre:</span>
-                <asp:TextBox ID="AgregarNombre" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AgregarNombre" class="form-control" runat="server" MaxLength="30"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="* nombre requerido." ControlToValidate="AgregarNombre" SetFocusOnError="true" Display="Dynamic"></asp:RequiredFieldValidator>
 
             </div>
@@ -33,7 +33,7 @@
             <div class="form-group">
 
                 <span class="help-block text-muted small-font">Numero de episodio:</span>
-                <asp:TextBox ID="AgregarNumeroEpisodio" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AgregarNumeroEpisodio" class="form-control" runat="server" MaxLength="3" TextMode="Number"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="* numero de episodio requerido." ControlToValidate="AgregarNumeroEpisodio" SetFocusOnError="true" Display="Dynamic"></asp:RequiredFieldValidator>
 
             </div>
