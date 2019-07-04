@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 public class Episodio
 {
     public int identificador { get; set; }
-    public String nombre { get; set; }
+    public string nombre { get; set; }
     public int numeroEpisodio { get; set; }
-    public String direccionVideo { get; set; }
-    public String descripcion { get; set; }
+    public string direccionVideo { get; set; }
+    public string descripcion { get; set; }
 }
 

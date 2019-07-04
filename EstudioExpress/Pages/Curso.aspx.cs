@@ -11,7 +11,68 @@ namespace EstudioExpress.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                if (!HttpContext.Current.User.Identity.IsAuthenticated && !HttpContext.Current.User.IsInRole("CONSULTAR_CURSOS"))
+                {
+                    Response.Redirect("Login.aspx");
+                }
 
+                if (((int?)Session["idCurso"] ?? 0) == 0)
+                {
+                    Response.Redirect("Cursos.aspx");
+                }
+                var curso = GestorDeCursos.ObtenerInstancia().ObtenerCurso((int)Session["idCurso"]);
+                listaDeEpisodios.DataSource = curso.Episodios;
+                listaDeEpisodios.DataBind();
+                lblDescripcionCurso.Text = curso.descripcion;
+                Session["IdCursoAComprar"] = curso.identificador.ToString();
+                Session["NombreCursoAComprar"] = curso.nombre;
+                var idUsuario = ((EstudioExpress.CustomIdentity)HttpContext.Current?.User?.Identity).identificador;
+                var usuarioCurso = GestorDeCursos.ObtenerInstancia().EsUnCursoAsignadoAlUsuario(curso.identificador, idUsuario);
+
+                HabilitarVideoSiEsCliente(usuarioCurso);
+            }
+        }
+
+        private void HabilitarVideoSiEsCliente(bool usuarioCurso)
+        {
+            for (int i = 0; i < listaDeEpisodios.Items.Count(); i++)
+            {
+                Button btnVideoUrl = (Button)listaDeEpisodios.Items[i].FindControl("btnVerVideo");
+
+                if (HttpContext.Current.User.Identity.Name == "Carlos.Sanchez" && usuarioCurso)
+                {
+                    btnVideoUrl.Enabled = true;
+                    comprarPanel.Visible = false;
+                }
+                else
+                {
+                    btnVideoUrl.Enabled = false;
+                    comprarPanel.Visible = true;
+                }
+            }
+        }
+
+        protected void ListView_ItemCommand(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "CursoVerVideo")
+            {
+                var video = (e.CommandArgument.ToString());
+                Helpers.MessageBox.Redirect(Response, video, "menubar=0,scrollbars=1,width=780,height=900,top=10", "");
+            }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (listaDeEpisodios.Items.Count() > 0)
+            {
+                Response.Redirect("Pago.aspx");
+            }
+            else
+            {
+                Helpers.MessageBox.Show(this, "El curso actualmente no posee episodios. Por favor contacte al tutor.");
+            }
         }
     }
 }

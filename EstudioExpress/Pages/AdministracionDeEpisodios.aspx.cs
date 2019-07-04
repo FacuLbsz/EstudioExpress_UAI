@@ -19,24 +19,24 @@ namespace EstudioExpress.Pages
                     Response.Redirect("Login.aspx");
                 }
                 
-                String cursoAComprar = Session["idCurso"] != null ? "" : Session["idCurso"].ToString();
-                Session["idCurso"] = "";
+                string cursoAComprar = Session["idCurso"] != null ? Session["idCurso"].ToString() : string.Empty;
+                Session["idCurso"] = string.Empty;
 
-                if (cursoAComprar == "")
+                if (string.IsNullOrEmpty(cursoAComprar))
                 {
                     Response.Redirect("AdministracionDeCursos.aspx");
                 }
 
                 CustomIdentity userIdentity = (CustomIdentity)HttpContext.Current.User.Identity;
 
-                var curso = GestorDeCursos.ObtenerInstancia().ObtenerCurso(Int32.Parse(cursoAComprar));
+                var curso = GestorDeCursos.ObtenerInstancia().ObtenerCurso(int.Parse(cursoAComprar));
                 var nombreCurso = curso.nombre;
 
 
                 EpisodioList.DataSource = curso.Episodios;
                 EpisodioList.DataBind();
 
-                TituloLabel.Text = String.Format("Adminsitrar episodios del curso <b>{0}</b>", nombreCurso);
+                TituloLabel.Text = string.Format("Adminsitrar episodios del curso <b>{0}</b>", nombreCurso);
                 CursoIdentificador.Text = cursoAComprar;
                 CursoNombre.Text = nombreCurso;
             }
@@ -53,7 +53,10 @@ namespace EstudioExpress.Pages
 
                     CustomIdentity userIdentity = (CustomIdentity)HttpContext.Current.User.Identity;
 
-                    GestorDeCursos.ObtenerInstancia().QuitarEpisodioACurso(new Episodio() {identificador= episodio }, new CursoEntidad() { identificador = Int32.Parse(CursoIdentificador.Text) }, userIdentity.identificador);
+                    GestorDeCursos.ObtenerInstancia().QuitarEpisodioACurso(new Episodio() {identificador= episodio }, new CursoEntidad()
+                    {
+                        identificador = Int32.Parse(CursoIdentificador.Text)
+                    }, userIdentity.identificador);
 
                     Session["idCurso"] = CursoIdentificador.Text;
 

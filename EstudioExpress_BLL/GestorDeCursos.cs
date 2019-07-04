@@ -150,6 +150,7 @@ public class GestorDeCursos
         CursoEntidad curso = new CursoEntidad();
 
         curso.nombre = Convert.ToString(row["nombre"]);
+        curso.descripcion = Convert.ToString(row["descripcion"]);
         curso.identificador = Convert.ToInt32(row["idCurso"]);
         curso.precio = Convert.ToDecimal(row["precio"]);
         curso.duracion = Convert.ToInt32(row["duracion"]);

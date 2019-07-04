@@ -19,12 +19,12 @@ namespace EstudioExpress.Pages
                     Response.Redirect("Login.aspx");
                 }
 
-                String cursoAComprar = Session["IdCursoAComprar"] != null ? "" : Session["IdCursoAComprar"].ToString();
-                Session["IdCursoAComprar"] = "";
+                var cursoAComprar = !string.IsNullOrEmpty(Session["IdCursoAComprar"].ToString()) ? Session["IdCursoAComprar"].ToString() : string.Empty;
+                Session["IdCursoAComprar"] = string.Empty;
 
                 var nombreCursoAComprar = Session["NombreCursoAComprar"].ToString();
 
-                if (cursoAComprar == "")
+                if (string.IsNullOrEmpty(cursoAComprar))
                 {
                     Response.Redirect("Cursos.aspx");
                 }
@@ -37,14 +37,14 @@ namespace EstudioExpress.Pages
                     return;
                 }
 
-                TituloLabel.Text = String.Format("Ingrese los datos de su Tarjeta de Credito para comprar el curso <b>{0}</b>", nombreCursoAComprar);
+                TituloLabel.Text = string.Format("Ingrese los datos de su Tarjeta de Credito para comprar el curso <b>{0}</b>", nombreCursoAComprar);
                 CursoIdentificador.Text = cursoAComprar;
             }
         }
 
         protected void PagarButton_Click(object sender, EventArgs e)
         {
-            var cursoAComprar = Int32.Parse(CursoIdentificador.Text);
+            var cursoAComprar = int.Parse(CursoIdentificador.Text);
             var nombreCursoAComprar = Session["NombreCursoAComprar"].ToString();
 
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
@@ -67,8 +67,8 @@ namespace EstudioExpress.Pages
 
         protected void CancelarButton_Click(object sender, EventArgs e)
         {
-            Session["IdCursoAComprar"] = "";
-            Session["NombreCursoAComprar"] = "";
+            Session["IdCursoAComprar"] = string.Empty;
+            Session["NombreCursoAComprar"] = string.Empty;
             Response.Redirect("Cursos.aspx");
         }
 
