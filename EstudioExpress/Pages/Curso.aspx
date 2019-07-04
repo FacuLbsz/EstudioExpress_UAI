@@ -23,6 +23,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <h3>Comprar Curso</h3>
+                                <asp:Label runat="server" ID="PrecioCursoLabel" CssClass="h5"></asp:Label>
                                 <br />
                                 <br />
                                 <asp:Button class="myButton" Text="Comprar" runat="server" ID="btnComprarCurso" OnClick="btnSubmit_Click" />
@@ -71,10 +72,11 @@
                         <%# Item.nombre %>  
                     </td>
                     <td>
-                        <asp:Button ID="btnVerVideo" CommandName="CursoVerVideo" CommandArgument='<%# Eval("direccionVideo") %>' OnCommand="ListView_ItemCommand" Text="Ver Video" ToolTip="Ver Video Online" CausesValidation="false" runat="server" CssClass="btn" />
+                        <asp:Button ID="btnVerVideo" CommandName="CursoVerVideo" CommandArgument='<%# Eval("identificador") %>' OnCommand="ListView_ItemCommand" Text="Ver Video" ToolTip="Ver Video Online" CausesValidation="false" runat="server" CssClass="btn" />
                     </td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>
+        <asp:Label ID="LabelIdCurso" runat="server" Text=""></asp:Label>
     </div>
 </asp:Content>
