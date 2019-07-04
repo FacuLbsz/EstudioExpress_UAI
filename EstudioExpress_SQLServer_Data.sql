@@ -44,6 +44,8 @@ INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia
 INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (2, 2, 2, N'3C59DC048E8850243BE8079A5C74D079')
 INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (3, 3, 3, N'3C59DC048E8850243BE8079A5C74D079')
 INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (4, 4, 3, N'3C59DC048E8850243BE8079A5C74D079')
+INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (5, 5, 1, N'3C59DC048E8850243BE8079A5C74D079')
+INSERT [dbo].[familiapatente] ([idFamiliaPatente], [Patente_idPatente], [Familia_idFamilia], [digitoVerificadorH]) VALUES (6, 6, 1, N'3C59DC048E8850243BE8079A5C74D079')
 SET IDENTITY_INSERT [dbo].[familiapatente] OFF
 SET IDENTITY_INSERT [dbo].[familiausuario] ON 
 
