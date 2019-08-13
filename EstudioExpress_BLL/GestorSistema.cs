@@ -123,17 +123,29 @@ public class GestorSistema
     {
 
         var map = new Dictionary<String, List<String>>();
-        map.Add("BITACORA", new List<String>() { "criticidad", "descripcion", "fecha", "funcionalidad", "Usuario_idUsuario" });
-        map.Add("USUARIO", new List<String>() { "nombreUsuario", "nombre", "apellido", "contrasena" });
-        map.Add("PATENTEUSUARIO", new List<String>() { "esPermisiva", "Patente_idPatente", "Usuario_idUsuario" });
-        map.Add("FAMILIAPATENTE", new List<String>() { "Patente_idPatente", "Familia_idFamilia" });
+        map.Add("BITACORA-idBitacora", new List<String>() { "criticidad", "descripcion", "fecha", "funcionalidad", "Usuario_idUsuario" });
+        map.Add("USUARIO-idUsuario", new List<String>() { "nombreUsuario", "nombre", "apellido", "contrasena" });
+        map.Add("PATENTEUSUARIO-idPatente", new List<String>() { "esPermisiva", "Patente_idPatente", "Usuario_idUsuario" });
+        map.Add("FAMILIAPATENTE-idFamiliaPatente", new List<String>() { "Patente_idPatente", "Familia_idFamilia" });
 
+        var eventoRegistro = "Error de digito verificador en las tablas ";
+        List<String> errores = new List<string>();
         foreach (String tabla in map.Keys)
         {
-            if (ConsultaIntegridadDeUnaTabla(tabla, map[tabla]) == 0)
+            try
             {
-                return 0;
+                ConsultaIntegridadDeUnaTabla(tabla, map[tabla]);
+
             }
+            catch (EntidadDuplicadaExcepcion exc)
+            {
+                errores.Add(exc.atributo);
+            }
+            
+        }
+        if (errores.Count > 0)
+        {
+            throw new EntidadDuplicadaExcepcion(eventoRegistro + String.Join("<br/> ", errores));
         }
         return 1;
     }
@@ -146,6 +158,10 @@ public class GestorSistema
     /// <returns></returns>
     private int ConsultaIntegridadDeUnaTabla(String tabla, List<String> atributos)
     {
+        var tablaAux = tabla.Split('-')[0];
+        var id = tabla.Split('-')[1];
+        tabla = tablaAux;
+
 
         DataTable dataTable = baseDeDatos.ConsultarBase(String.Format("SELECT * FROM {0}", tabla));
 
@@ -169,7 +185,7 @@ public class GestorSistema
             }
 
             var digitoVH = GestorDeDigitoVerificador.ObtenerDigitoVH(argumentos);
-
+            var idFinal = Convert.ToString(eventoBitacora[id]);
             if (!digitoVH.Equals(Convert.ToString(eventoBitacora["digitoVerificadorH"])))
             {
                 var columns = "";
@@ -177,9 +193,12 @@ public class GestorSistema
                 {
                     columns = columns + " Columna: " + key;
                 }
+                var registroError = "Tabla: " + tabla + columns + " Id: " + idFinal + " Valores:" + String.Join(", ", argumentos);
+                
                 var evento1 = new EventoBitacora() { fecha = DateTime.Now, descripcion = "Error de digito verificador horizontal en la tabla " + tabla + columns, criticidad = 1, funcionalidad = "INTEGRIDAD DE BASE DATOS", usuario = null };
                 GestorDeBitacora.ObtenerInstancia().RegistrarEvento(evento1);
-                return 0;
+                
+                throw new EntidadDuplicadaExcepcion(registroError);
             }
 
 
@@ -333,7 +352,7 @@ public class GestorSistema
                 if (!File.Exists(rutaOrigen))
                 {
                     zipFile.ExtractAll(pathToGetFile);
-                }
+                }               
 
                 string[] backFiles = Directory.GetFiles(pathToGetFile, "*.bak*", SearchOption.AllDirectories);
 

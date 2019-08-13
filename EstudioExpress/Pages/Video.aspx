@@ -2,9 +2,10 @@
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container custom-container">
-        <video width="100%" height="100%" controls>
-            <source src="../static/videos/video.mp4" type="video/mp4">
+        <iframe width="560" height="315" src='<%= GetVideoLink() %>' frameborder="0" allowfullscreen></iframe>
+        <%--<video width="100%" height="100%" controls>
+            <source type="video/mp4" src='<%= GetVideoLink() %>' />
             Your browser does not support the video tag.
-        </video>
+        </video>--%>
     </div>
 </asp:Content>

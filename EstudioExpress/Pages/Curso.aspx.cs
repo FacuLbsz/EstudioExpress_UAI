@@ -60,10 +60,9 @@ namespace EstudioExpress.Pages
         protected void ListView_ItemCommand(object sender, CommandEventArgs e)
         {
             if (e.CommandName == "CursoVerVideo")
-            {
-                
+            {                
                 var idVideo = (e.CommandArgument.ToString());
-                Session["IdCursoAVer"] = LabelIdCurso.Text;
+                //Session["IdCursoAVer"] = LabelIdCurso.Text;
                 Session["IdEpisodioAVer"] = idVideo;
                 Response.Redirect("Video.aspx");
             }

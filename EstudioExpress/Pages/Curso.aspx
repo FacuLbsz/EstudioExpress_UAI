@@ -72,7 +72,7 @@
                         <%# Item.nombre %>  
                     </td>
                     <td>
-                        <asp:Button ID="btnVerVideo" CommandName="CursoVerVideo" CommandArgument='<%# Eval("identificador") %>' OnCommand="ListView_ItemCommand" Text="Ver Video" ToolTip="Ver Video Online" CausesValidation="false" runat="server" CssClass="btn" />
+                        <asp:Button ID="btnVerVideo" CommandName="CursoVerVideo" CommandArgument='<%# Eval("direccionVideo") %>' OnCommand="ListView_ItemCommand" Text="Ver Video" ToolTip="Ver Video Online" CausesValidation="false" runat="server" CssClass="btn" />
                     </td>
                 </tr>
             </ItemTemplate>

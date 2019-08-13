@@ -56,15 +56,18 @@ namespace EstudioExpress
 
                         var cookie = new HttpCookie("EstudioExpress_Usuario", GestorDeEncriptacion.EncriptarAes(usuario.identificador + "|" + UsuarioTextBox.Text + "|" + patentes));
 
-                        
 
-                        if (GestorSistema.ObtenerInstancia().ConsultarIntegridadDeBaseDeDatos() == 0)
+                        try
+                        {
+                            GestorSistema.ObtenerInstancia().ConsultarIntegridadDeBaseDeDatos();
+                        }
+                        catch (EntidadDuplicadaExcepcion exception)
                         {
                             if (patentesPorFamilia.Exists(x => x.patente.nombre == "BITACORA"))
                             {
 
                                 Response.Cookies.Add(cookie);
-                                MessageBox.ShowAndRedirect(this, "Se ha vulnerado la integridad de la base de datos, desea recuperarla?", "RecuperarIntegridad.aspx");
+                                MessageBox.ShowAndRedirect(this, "Se ha vulnerado la integridad de la base de datos, desea recuperarla? " + exception.atributo, "RecuperarIntegridad.aspx");
                                 return;
                             }
                             else
@@ -72,7 +75,9 @@ namespace EstudioExpress
                                 MessageBox.ShowAndRedirect(this, "Se ha vulnerado la integridad de la base de datos por favor comuniquese con el administrador de sistema.", "Login.aspx");
                                 return;
                             }
+                            throw;
                         }
+                        
 
                         Response.Cookies.Add(cookie);
                         Response.Redirect("Home.aspx");
